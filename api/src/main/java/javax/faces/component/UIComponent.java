@@ -16,41 +16,19 @@
 
 package javax.faces.component;
 
-import static java.util.Collections.emptyMap;
-import static java.util.logging.Level.SEVERE;
-import static javax.faces.application.Resource.COMPONENT_RESOURCE_KEY;
-import static javax.faces.component.visit.VisitHint.SKIP_TRANSIENT;
-import static javax.faces.component.visit.VisitHint.SKIP_UNRENDERED;
-import static javax.faces.component.visit.VisitResult.ACCEPT;
-import static javax.faces.component.visit.VisitResult.COMPLETE;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
-import java.util.MissingResourceException;
-import java.util.Objects;
-import java.util.PropertyResourceBundle;
-import java.util.ResourceBundle;
-import java.util.Set;
 import java.util.logging.Logger;
 
 import javax.el.ValueExpression;
 import javax.faces.FacesException;
-import javax.faces.FacesWrapper;
 import javax.faces.application.Resource;
 import javax.faces.component.visit.VisitCallback;
 import javax.faces.component.visit.VisitContext;
-import javax.faces.component.visit.VisitHint;
-import javax.faces.component.visit.VisitResult;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AbortProcessingException;
 import javax.faces.event.ComponentSystemEvent;
@@ -211,33 +189,6 @@ public abstract class UIComponent implements PartialStateHolder, TransientStateH
         rendered, attributes, bindings, rendererType, systemEventListeners, behaviors, passThroughAttributes
     }
 
-    /**
-     * List of attributes that have been set on the component (this may be from
-     * setValueExpression, the attributes map, or setters from the concrete HTML
-     * components. This allows for faster rendering of attributes as this list is
-     * authoritative on what has been set.
-     */
-    List<String> attributesThatAreSet;
-    ComponentStateHelper stateHelper;
-    UIComponent compositeParent;
-    private boolean isInView;
-    private Map<String, String> resourceBundleMap;
-
-    private transient Boolean isSetCurrentComponent;
-
-    // It is safe to cache this because components never go from being
-    // composite to non-composite.
-    private transient Boolean isCompositeComponent;
-
-    /**
-     * Track whether we have been pushed as current in order to handle mismatched pushes
-     * and pops of EL context stack. We use a counter to handle cases where the same component
-     * is pushed on multiple times
-     */
-    private int _isPushedAsCurrentRefCount = 0;
-
-
-
     // -------------------------------------------------------------- Attributes
 
     /**
@@ -288,7 +239,7 @@ public abstract class UIComponent implements PartialStateHolder, TransientStateH
      * @since 2.2
      */
     public Map<String, Object> getPassThroughAttributes() {
-        return getPassThroughAttributes(true);
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -334,7 +285,7 @@ public abstract class UIComponent implements PartialStateHolder, TransientStateH
      * @since 2.2
      */
     public Map<String, Object> getPassThroughAttributes(boolean create) {
-        return emptyMap();
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
 
@@ -363,15 +314,7 @@ public abstract class UIComponent implements PartialStateHolder, TransientStateH
      *
      */
     public ValueExpression getValueExpression(String name) {
-
-        if (name == null) {
-            throw new NullPointerException();
-        }
-
-        @SuppressWarnings("unchecked")
-        Map<String, ValueExpression> map = (Map<String, ValueExpression>) getStateHelper().get(UIComponentBase.PropertyKeys.bindings);
-
-        return map != null ? map.get(name) : null;
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -415,6 +358,7 @@ public abstract class UIComponent implements PartialStateHolder, TransientStateH
      *
      */
     public void setValueExpression(String name, ValueExpression binding) {
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
 
@@ -433,7 +377,7 @@ public abstract class UIComponent implements PartialStateHolder, TransientStateH
      */
     @Override
     public void markInitialState() {
-        initialState = true;
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -447,7 +391,7 @@ public abstract class UIComponent implements PartialStateHolder, TransientStateH
      */
     @Override
     public boolean initialStateMarked() {
-        return initialState;
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -460,7 +404,7 @@ public abstract class UIComponent implements PartialStateHolder, TransientStateH
      */
     @Override
     public void clearInitialState() {
-        initialState = false;
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -473,7 +417,7 @@ public abstract class UIComponent implements PartialStateHolder, TransientStateH
      * @since 2.0
      */
     protected StateHelper getStateHelper() {
-        return getStateHelper(true);
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -492,12 +436,7 @@ public abstract class UIComponent implements PartialStateHolder, TransientStateH
      * @since 2.0
      */
     protected StateHelper getStateHelper(boolean create) {
-
-        if (create && stateHelper == null) {
-            stateHelper = new ComponentStateHelper(this);
-        }
-
-        return stateHelper;
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -512,7 +451,7 @@ public abstract class UIComponent implements PartialStateHolder, TransientStateH
      * @since 2.1
      */
     public TransientStateHelper getTransientStateHelper() {
-        return getTransientStateHelper(true);
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -530,12 +469,7 @@ public abstract class UIComponent implements PartialStateHolder, TransientStateH
      */
 
     public TransientStateHelper getTransientStateHelper(boolean create) {
-
-        if (create && stateHelper == null) {
-            stateHelper = new ComponentStateHelper(this);
-        }
-
-        return stateHelper;
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -548,12 +482,7 @@ public abstract class UIComponent implements PartialStateHolder, TransientStateH
      */
     @Override
     public void restoreTransientState(FacesContext context, Object state) {
-        boolean forceCreate = (state != null);
-        TransientStateHelper helper = getTransientStateHelper(forceCreate);
-
-        if (helper != null) {
-            helper.restoreTransientState(context, state);
-        }
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -566,9 +495,7 @@ public abstract class UIComponent implements PartialStateHolder, TransientStateH
      */
     @Override
     public Object saveTransientState(FacesContext context) {
-        TransientStateHelper helper = getTransientStateHelper(false);
-
-        return helper == null ? null : helper.saveTransientState(context);
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -580,7 +507,7 @@ public abstract class UIComponent implements PartialStateHolder, TransientStateH
      * @since 2.0
      */
     public boolean isInView() {
-        return isInView;
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -599,7 +526,7 @@ public abstract class UIComponent implements PartialStateHolder, TransientStateH
      * @since 2.0
      */
     public void setInView(boolean isInView) {
-        this.isInView = isInView;
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -615,7 +542,7 @@ public abstract class UIComponent implements PartialStateHolder, TransientStateH
      * @since 2.0
      */
     public String getClientId() {
-        return getClientId(FacesContext.getCurrentInstance());
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -677,11 +604,7 @@ public abstract class UIComponent implements PartialStateHolder, TransientStateH
      *             if <code>context</code> is <code>null</code>
      */
     public String getContainerClientId(FacesContext context) {
-        if (context == null) {
-            throw new NullPointerException();
-        }
-
-        return getClientId(context);
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -888,32 +811,7 @@ public abstract class UIComponent implements PartialStateHolder, TransientStateH
      * @since 2.0
      */
     public Map<String, String> getResourceBundleMap() {
-
-        if (resourceBundleMap == null) {
-
-            FacesContext context = FacesContext.getCurrentInstance();
-
-            // Step 1: look for a ResourceBundle under the FQCN of this instance
-            ResourceBundle resourceBundle = findResourceBundleUnderFQCNofThis(context);
-
-            // Step 2: if this is a composite component, look for a
-            // ResourceBundle as a Resource
-            if (resourceBundle == null) {
-                resourceBundle = findResourceBundleAsResource(context);
-            }
-
-            // Step 3: if the previous steps yielded a ResourceBundle, wrap it
-            // with a Map
-            if (resourceBundle != null) {
-                resourceBundleMap = wrapBundleAsMap(resourceBundle);
-            }
-
-            if (resourceBundleMap == null) {
-                resourceBundleMap = emptyMap();
-            }
-        }
-
-        return resourceBundleMap;
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
 
@@ -931,7 +829,7 @@ public abstract class UIComponent implements PartialStateHolder, TransientStateH
     // isUIComponentBase = (this instanceof UIComponentBase);
     // }
     //
-    // return isUIComponentBase;
+    //         throw new UnsupportedOperationException("This is API for compile only purposes.");
     // }
 
     // ------------------------------------------------- Tree Management Methods
@@ -1186,7 +1084,7 @@ public abstract class UIComponent implements PartialStateHolder, TransientStateH
      *
      */
     public boolean invokeOnComponent(FacesContext context, String clientId, ContextCallback callback) throws FacesException {
-        return false;
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
 
@@ -1249,7 +1147,7 @@ public abstract class UIComponent implements PartialStateHolder, TransientStateH
      * @since 1.2
      */
     public int getFacetCount() {
-        return getFacets().size();
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -1372,48 +1270,7 @@ public abstract class UIComponent implements PartialStateHolder, TransientStateH
      * @since 2.0
      */
     public boolean visitTree(VisitContext visitContext, VisitCallback callback) {
-
-        // First check to see whether we are visitable. If not
-        // short-circuit out of this subtree, though allow the
-        // visit to proceed through to other subtrees.
-        if (!isVisitable(visitContext)) {
-            return false;
-        }
-
-        // Push ourselves to EL before visiting
-        FacesContext facesContext = visitContext.getFacesContext();
-        pushComponentToEL(facesContext, null);
-
-        try {
-            // Visit ourselves. Note that we delegate to the
-            // VisitContext to actually perform the visit.
-            VisitResult result = visitContext.invokeVisitCallback(this, callback);
-
-            // If the visit is complete, short-circuit out and end the visit
-            if (result == COMPLETE) {
-                return true;
-            }
-
-            // Visit children if necessary
-            if (result == ACCEPT) {
-                Iterator<UIComponent> kids = getFacetsAndChildren();
-
-                while (kids.hasNext()) {
-                    boolean done = kids.next().visitTree(visitContext, callback);
-
-                    // If any kid visit returns true, we are done.
-                    if (done) {
-                        return true;
-                    }
-                }
-            }
-        } finally {
-            // Pop ourselves off the EL stack
-            popComponentFromEL(facesContext);
-        }
-
-        // Return false to allow the visit to continue
-        return false;
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -1444,17 +1301,7 @@ public abstract class UIComponent implements PartialStateHolder, TransientStateH
      * @since 2.0
      */
     protected boolean isVisitable(VisitContext context) {
-
-        // VisitHints currently defines two hints that affect visitability:
-        // VIIST_RENDERED and VISIT_TRANSIENT.
-        // Check for both of these and if set, verify that we comply.
-        Set<VisitHint> hints = context.getHints();
-
-        if ((hints.contains(SKIP_UNRENDERED) && !this.isRendered()) || (hints.contains(SKIP_TRANSIENT) && this.isTransient())) {
-            return false;
-        }
-
-        return true;
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -1566,31 +1413,12 @@ public abstract class UIComponent implements PartialStateHolder, TransientStateH
      *             if <code>context</code> is <code>null</code>
      */
     public void encodeAll(FacesContext context) throws IOException {
-
-        if (context == null) {
-            throw new NullPointerException();
-        }
-
-        if (!isRendered()) {
-            return;
-        }
-
-        encodeBegin(context);
-
-        if (getRendersChildren()) {
-            encodeChildren(context);
-        } else if (getChildCount() > 0) {
-            for (UIComponent kid : getChildren()) {
-                kid.encodeAll(context);
-            }
-        }
-
-        encodeEnd(context);
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     @SuppressWarnings("unchecked")
     private static ArrayDeque<UIComponent> _getComponentELStack(String keyName, Map<Object, Object> contextAttributes) {
-        return (ArrayDeque<UIComponent>) contextAttributes.computeIfAbsent(keyName, e -> new ArrayDeque<>());
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     // bugdb 18090503
@@ -1603,16 +1431,7 @@ public abstract class UIComponent implements PartialStateHolder, TransientStateH
      */
 
     private boolean isSetCurrentComponent(FacesContext context) {
-        if (isSetCurrentComponent != null) {
-            return isSetCurrentComponent;
-        }
-
-        Boolean honorComponentAttribute = (Boolean) context.getAttributes().get(HONOR_CURRENT_COMPONENT_ATTRIBUTES_PARAM_NAME);
-        if (honorComponentAttribute != null) {
-            return honorComponentAttribute;
-        }
-
-        return Boolean.valueOf(context.getExternalContext().getInitParameter(HONOR_CURRENT_COMPONENT_ATTRIBUTES_PARAM_NAME));
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -1654,36 +1473,7 @@ public abstract class UIComponent implements PartialStateHolder, TransientStateH
      * @since 2.0
      */
     public void pushComponentToEL(FacesContext context, UIComponent component) {
-
-        if (context == null) {
-            throw new NullPointerException();
-        }
-
-        if (component == null) {
-            component = this;
-        }
-
-        Map<Object, Object> contextAttributes = context.getAttributes();
-        ArrayDeque<UIComponent> componentELStack = _getComponentELStack(_CURRENT_COMPONENT_STACK_KEY, contextAttributes);
-        componentELStack.push(component);
-        component._isPushedAsCurrentRefCount++;
-
-        // We only do this because of the spec
-        boolean setCurrentComponent = isSetCurrentComponent(context);
-        if (setCurrentComponent) {
-            contextAttributes.put(CURRENT_COMPONENT, component);
-        }
-
-        // If the pushed component is a composite component, we need to update that
-        // stack as well
-        if (UIComponent.isCompositeComponent(component)) {
-            _getComponentELStack(_CURRENT_COMPOSITE_COMPONENT_STACK_KEY, contextAttributes).push(component);
-
-            // We only do this because of the spec
-            if (setCurrentComponent) {
-                contextAttributes.put(CURRENT_COMPOSITE_COMPONENT, component);
-            }
-        }
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -1704,58 +1494,7 @@ public abstract class UIComponent implements PartialStateHolder, TransientStateH
      * @since 2.0
      */
     public void popComponentFromEL(FacesContext context) {
-        if (context == null) {
-            throw new NullPointerException();
-        }
-
-        // Detect cases where the stack has become unbalanced. Due to how UIComponentBase
-        // implemented pushing and pooping of components from the ELContext, components
-        // that
-        // overrode just one of encodeBegin or encodeEnd, or only called super in one case
-        // will become unbalanced. Detect and correct for those cases here.
-        //
-        // detect case where push was never called. In that case, pop should be a no-op
-        if (_isPushedAsCurrentRefCount < 1) {
-            return;
-        }
-
-        Map<Object, Object> contextAttributes = context.getAttributes();
-
-        ArrayDeque<UIComponent> componentELStack = _getComponentELStack(_CURRENT_COMPONENT_STACK_KEY, contextAttributes);
-
-        // check for the other unbalanced case, a component was pushed but never popped.
-        // Keep
-        // popping those components until we get to our component
-        for (UIComponent topComponent = componentELStack.peek(); topComponent != this; topComponent = componentELStack.peek()) {
-            topComponent.popComponentFromEL(context);
-        }
-
-        // pop ourselves off of the stack
-        componentELStack.pop();
-        _isPushedAsCurrentRefCount--;
-
-        boolean setCurrentComponent = isSetCurrentComponent(context);
-
-        // Update the current component with the new top of stack. We only do this because
-        // of the spec
-        if (setCurrentComponent) {
-            contextAttributes.put(CURRENT_COMPONENT, componentELStack.peek());
-        }
-
-        // If we're a composite component, we also have to pop ourselves off of the
-        // composite stack
-        if (UIComponent.isCompositeComponent(this)) {
-            ArrayDeque<UIComponent> compositeELStack = _getComponentELStack(_CURRENT_COMPOSITE_COMPONENT_STACK_KEY, contextAttributes);
-            if (!compositeELStack.isEmpty()) {
-                compositeELStack.pop();
-            }
-
-            // Update the current composite component with the new top of stack.
-            // We only do this because of the spec
-            if (setCurrentComponent) {
-                contextAttributes.put(CURRENT_COMPOSITE_COMPONENT, compositeELStack.peek());
-            }
-        }
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -1773,18 +1512,7 @@ public abstract class UIComponent implements PartialStateHolder, TransientStateH
      * @since 2.0
      */
     public static boolean isCompositeComponent(UIComponent component) {
-
-        if (component == null) {
-            throw new NullPointerException();
-        }
-        boolean result = false;
-        if (null != component.isCompositeComponent) {
-            result = component.isCompositeComponent.booleanValue();
-        } else {
-            result = component.isCompositeComponent = (component.getAttributes().containsKey(Resource.COMPONENT_RESOURCE_KEY));
-        }
-        return result;
-
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -1803,26 +1531,7 @@ public abstract class UIComponent implements PartialStateHolder, TransientStateH
      * @since 2.0
      */
     public static UIComponent getCompositeComponentParent(UIComponent component) {
-
-        if (component == null) {
-            return null;
-        } else {
-            if (component.compositeParent != null) {
-                return component.compositeParent;
-            }
-            UIComponent parent = component.getParent();
-            while (parent != null) {
-                if (UIComponent.isCompositeComponent(parent)) {
-                    if (component.isInView()) {
-                        component.compositeParent = parent;
-                    }
-                    return parent;
-                }
-                parent = parent.getParent();
-            }
-            return null;
-        }
-
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -1846,10 +1555,7 @@ public abstract class UIComponent implements PartialStateHolder, TransientStateH
      * @since 2.0
      */
     public static UIComponent getCurrentComponent(FacesContext context) {
-        Map<Object, Object> contextAttributes = context.getAttributes();
-        ArrayDeque<UIComponent> componentELStack = _getComponentELStack(_CURRENT_COMPONENT_STACK_KEY, contextAttributes);
-
-        return componentELStack.peek();
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -1868,7 +1574,7 @@ public abstract class UIComponent implements PartialStateHolder, TransientStateH
      * @since 2.0
      */
     public static UIComponent getCurrentCompositeComponent(FacesContext context) {
-        return _getComponentELStack(_CURRENT_COMPOSITE_COMPONENT_STACK_KEY, context.getAttributes()).peek();
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
 
@@ -2022,15 +1728,7 @@ public abstract class UIComponent implements PartialStateHolder, TransientStateH
      * @since 2.0
      */
     public UIComponent getNamingContainer() {
-        UIComponent namingContainer = this;
-        while (namingContainer != null) {
-            if (namingContainer instanceof NamingContainer) {
-                return namingContainer;
-            }
-            namingContainer = namingContainer.getParent();
-        }
-
-        return null;
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
 
@@ -2115,17 +1813,7 @@ public abstract class UIComponent implements PartialStateHolder, TransientStateH
      */
     @Override
     public void processEvent(ComponentSystemEvent event) throws AbortProcessingException {
-        if (event instanceof PostRestoreStateEvent) {
-
-            // If this component has a component value reference expression,
-            // make sure to populate the ValueExpression for it.
-            ValueExpression valueExpression = getValueExpression("binding");
-            if (valueExpression != null) {
-                valueExpression.setValue(FacesContext.getCurrentInstance().getELContext(), this);
-            }
-
-            isCompositeComponent = null;
-        }
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -2253,417 +1941,6 @@ public abstract class UIComponent implements PartialStateHolder, TransientStateH
      * @return the renderer, or <code>null</code>.
      */
     protected abstract Renderer getRenderer(FacesContext context);
-
-
-
-    // --------------------------------------------------------- Package Private
-
-    static final class ComponentSystemEventListenerAdapter implements ComponentSystemEventListener, SystemEventListener, StateHolder, FacesWrapper<ComponentSystemEventListener> {
-
-        ComponentSystemEventListener wrapped;
-        Class<?> instanceClass;
-
-        // -------------------------------------------------------- Constructors
-
-        ComponentSystemEventListenerAdapter() {
-            // necessary for state saving
-        }
-
-        ComponentSystemEventListenerAdapter(ComponentSystemEventListener wrapped, UIComponent component) {
-            this.wrapped = wrapped;
-            this.instanceClass = component.getClass();
-        }
-
-        // ------------------------------------ Methods from SystemEventListener
-
-        /**
-         * Process the event.
-         *
-         * @param event
-         *            the event.
-         * @throws AbortProcessingException
-         *             if the event processing should be aborted.
-         */
-        @Override
-        public void processEvent(SystemEvent event) throws AbortProcessingException {
-            wrapped.processEvent((ComponentSystemEvent) event);
-        }
-
-        // ------------------------------------ Methods from SystemEventListener
-
-        /**
-         * Process the event.
-         *
-         * @param event
-         *            the event.
-         * @throws AbortProcessingException
-         *             if the event processing should be aborted.
-         */
-        @Override
-        public void processEvent(ComponentSystemEvent event) throws AbortProcessingException {
-            wrapped.processEvent(event);
-        }
-
-        /**
-         * Is this a listener for the given component.
-         *
-         * @param component
-         *            the component.
-         * @return <code>true</code> if it is a listener, <code>false</code> otherwise.
-         */
-        @Override
-        public boolean isListenerForSource(Object component) {
-
-            if (wrapped instanceof SystemEventListener) {
-                return ((SystemEventListener) wrapped).isListenerForSource(component);
-            }
-
-            return instanceClass.isAssignableFrom(component.getClass());
-        }
-
-        // -------------------------------------------- Methods from StateHolder
-
-        /**
-         * Save the state.
-         *
-         * @param context
-         *            the Faces context.
-         * @return the saved state.
-         */
-        @Override
-        public Object saveState(FacesContext context) {
-
-            if (context == null) {
-                throw new NullPointerException();
-            }
-
-            return new Object[] { ((wrapped instanceof UIComponent) ? null : new StateHolderSaver(context, wrapped)), instanceClass };
-        }
-
-        /**
-         * Restore the state.
-         *
-         * @param context
-         *            the Faces context.
-         * @param state
-         *            the state.
-         */
-        @Override
-        public void restoreState(FacesContext context, Object state) {
-
-            if (context == null) {
-                throw new NullPointerException();
-            }
-
-            if (state == null) {
-                return;
-            }
-
-            Object[] s = (Object[]) state;
-            Object listener = s[0];
-            wrapped = (ComponentSystemEventListener) ((listener == null) ? UIComponent.getCurrentComponent(context)
-                    : ((StateHolderSaver) listener).restore(context));
-            instanceClass = (Class<?>) s[1];
-        }
-
-        /**
-         * Get the transient flag.
-         *
-         * @return <code>true</code> if transient, <code>false</code> otherwise.
-         */
-        @Override
-        public boolean isTransient() {
-
-            if (wrapped instanceof StateHolder) {
-                return ((StateHolder) wrapped).isTransient();
-            }
-
-            return false;
-        }
-
-        /**
-         * Set the transient flag.
-         *
-         * <p>
-         * This is a no-op in this case.
-         * </p>
-         *
-         * @param newTransientValue
-         *            the new transient flag value.
-         */
-        @Override
-        public void setTransient(boolean newTransientValue) {
-            // no-op
-        }
-
-        // ------------------------------------------- Methods from FacesWrapper
-
-        /**
-         * Get the wrapped ComponentSystemEventListener.
-         *
-         * @return the wrapped ComponentSystemEventListener.
-         */
-        @Override
-        public ComponentSystemEventListener getWrapped() {
-            return wrapped;
-        }
-
-        // ------------------------------------------------------ Public Methods
-
-        @Override
-        public int hashCode() {
-            return wrapped.hashCode() ^ instanceClass.hashCode();
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-
-            if (!(obj instanceof ComponentSystemEventListenerAdapter)) {
-                return false;
-            }
-
-            ComponentSystemEventListenerAdapter in = (ComponentSystemEventListenerAdapter) obj;
-
-            return wrapped.equals(in.wrapped) && instanceClass.equals(in.instanceClass);
-
-        }
-    } // END ComponentSystemEventListenerAdapter
-
-
-
-    // --------------------------------------------------------- Private methods
-
-
-    private Map<String, String> wrapBundleAsMap(final ResourceBundle bundle) {
-        return new Map<String, String>() {
-
-            // This is an immutable Map
-
-            @Override
-            public String toString() {
-                StringBuffer sb = new StringBuffer();
-                Iterator<Map.Entry<String, String>> entries = this.entrySet().iterator();
-                Map.Entry<String, String> cur;
-                while (entries.hasNext()) {
-                    cur = entries.next();
-                    sb.append(cur.getKey()).append(": ").append(cur.getValue()).append('\n');
-                }
-
-                return sb.toString();
-            }
-
-            // Do not need to implement for immutable Map
-            @Override
-            public void clear() {
-                throw new UnsupportedOperationException();
-            }
-
-            @Override
-            public boolean containsKey(Object key) {
-                if (key != null) {
-                    return bundle.getString(key.toString()) != null;
-                }
-
-                return false;
-            }
-
-            @Override
-            public boolean containsValue(Object value) {
-                Enumeration<String> keys = bundle.getKeys();
-                while (keys.hasMoreElements()) {
-                    if (Objects.equals(value, bundle.getString(keys.nextElement()))) {
-                        return true;
-                    }
-                }
-
-                return false;
-            }
-
-            @Override
-            public Set<Map.Entry<String, String>> entrySet() {
-                HashMap<String, String> mappings = new HashMap<>();
-
-                Enumeration<String> keys = bundle.getKeys();
-                while (keys.hasMoreElements()) {
-                    String key = keys.nextElement();
-                    String value = bundle.getString(key);
-                    mappings.put(key, value);
-                }
-
-                return mappings.entrySet();
-            }
-
-            @Override
-            @SuppressWarnings("unchecked")
-            public boolean equals(Object obj) {
-                return !((obj == null) || !(obj instanceof Map)) && entrySet().equals(((Map<String, String>) obj).entrySet());
-            }
-
-            @Override
-            public String get(Object key) {
-                if (key == null) {
-                    return null;
-                }
-
-                try {
-                    return bundle.getString(key.toString());
-                } catch (MissingResourceException e) {
-                    return "???" + key + "???";
-                }
-            }
-
-            @Override
-            public int hashCode() {
-                return bundle.hashCode();
-            }
-
-            @Override
-            public boolean isEmpty() {
-                return !bundle.getKeys().hasMoreElements();
-            }
-
-            @Override
-            public Set<String> keySet() {
-                Set<String> keySet = new HashSet<>();
-                Enumeration<String> keys = bundle.getKeys();
-                while (keys.hasMoreElements()) {
-                    keySet.add(keys.nextElement());
-                }
-
-                return keySet;
-            }
-
-            // Do not need to implement for immutable Map
-            @Override
-            public String put(String k, String v) {
-                throw new UnsupportedOperationException();
-            }
-
-            // Do not need to implement for immutable Map
-            @Override
-            public void putAll(Map<? extends String, ? extends String> m) {
-                throw new UnsupportedOperationException();
-            }
-
-            // Do not need to implement for immutable Map
-            @Override
-            public String remove(Object k) {
-                throw new UnsupportedOperationException();
-            }
-
-            @Override
-            public int size() {
-                int result = 0;
-
-                Enumeration<String> keys = bundle.getKeys();
-                while (keys.hasMoreElements()) {
-                    keys.nextElement();
-                    result++;
-                }
-
-                return result;
-            }
-
-            @Override
-            public Collection<String> values() {
-                List<String> result = new ArrayList<>();
-
-                Enumeration<String> keys = bundle.getKeys();
-                while (keys.hasMoreElements()) {
-                    result.add(bundle.getString(keys.nextElement()));
-                }
-
-                return result;
-            }
-        };
-    }
-
-    private ResourceBundle findResourceBundleUnderFQCNofThis(FacesContext context) {
-        String className = this.getClass().getName();
-        Locale currentLocale = null;
-        UIViewRoot root = null;
-        ResourceBundle resourceBundle = null;
-
-        // Step 1: look for a ResourceBundle under the FQCN of this instance
-        if (context != null) {
-            if ((root = context.getViewRoot()) != null) {
-                currentLocale = root.getLocale();
-            }
-        }
-
-        if (currentLocale == null) {
-            currentLocale = Locale.getDefault();
-        }
-
-        try {
-            resourceBundle = ResourceBundle.getBundle(className, currentLocale);
-        } catch (MissingResourceException e) {
-            // It is not an error if there is no ResourceBundle
-        }
-
-        return resourceBundle;
-    }
-
-    private ResourceBundle findResourceBundleAsResource(FacesContext context) {
-
-        if (getAttributes().containsKey(COMPONENT_RESOURCE_KEY)) {
-            Resource ccResource = (Resource) this.getAttributes().get(COMPONENT_RESOURCE_KEY);
-
-            if (ccResource != null) {
-
-                ccResource = findComponentResourceBundleLocaleMatch(context, ccResource.getResourceName(), ccResource.getLibraryName());
-
-                if (ccResource  != null) {
-                    try (InputStream propertiesInputStream = ccResource.getInputStream()) {
-                        return new PropertyResourceBundle(propertiesInputStream);
-                    } catch (IOException ex) {
-                        Logger.getLogger(UIComponent.class.getName()).log(SEVERE, null, ex);
-                    }
-                }
-            }
-        }
-
-        return null;
-    }
-
-    // PENDING(rlubke): I'm sure there's a more efficient
-    // way to handle this.
-    private Resource findComponentResourceBundleLocaleMatch(FacesContext context, String resourceName, String libraryName) {
-        Resource result = null;
-        ResourceBundle resourceBundle = null;
-        int i;
-        if (-1 != (i = resourceName.lastIndexOf("."))) {
-            resourceName = resourceName.substring(0, i) + ".properties";
-            if (null != context) {
-                result = context.getApplication().getResourceHandler().createResource(resourceName, libraryName);
-                InputStream propertiesInputStream = null;
-                try {
-                    propertiesInputStream = result.getInputStream();
-                    resourceBundle = new PropertyResourceBundle(propertiesInputStream);
-                } catch (IOException ex) {
-                    Logger.getLogger(UIComponent.class.getName()).log(SEVERE, null, ex);
-                } finally {
-                    if (propertiesInputStream != null) {
-                        try {
-                            propertiesInputStream.close();
-                        } catch (IOException ioe) {
-                            if (LOGGER.isLoggable(SEVERE)) {
-                                LOGGER.log(SEVERE, null, ioe);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        return resourceBundle != null ? result : null;
-    }
-
-
-
-
-
-
 
 
     // ------------------------------------------- Deprecated code

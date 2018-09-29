@@ -36,8 +36,6 @@ import javax.faces.context.FacesContext;
 public abstract class SearchExpressionHandlerWrapper extends SearchExpressionHandler
         implements FacesWrapper<SearchExpressionHandler> {
 
-    private final SearchExpressionHandler wrapped;
-
     /**
      * <p class="changed_added_2_3">If this search expression handler has been decorated,
      * the implementation doing the decorating should push the implementation being wrapped to this constructor.
@@ -47,65 +45,65 @@ public abstract class SearchExpressionHandlerWrapper extends SearchExpressionHan
      * @since 2.3
      */
     public SearchExpressionHandlerWrapper(SearchExpressionHandler wrapped) {
-        this.wrapped = wrapped;
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     @Override
     public SearchExpressionHandler getWrapped() {
-        return wrapped;
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     @Override
     public String resolveClientId(SearchExpressionContext searchExpressionContext, String expression) {
-        return getWrapped().resolveClientId(searchExpressionContext, expression);
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     @Override
     public List<String> resolveClientIds(SearchExpressionContext searchExpressionContext, String expressions) {
-        return getWrapped().resolveClientIds(searchExpressionContext, expressions);
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     @Override
     public void resolveComponent(SearchExpressionContext searchExpressionContext, String expression,
             ContextCallback callback) {
-        getWrapped().resolveComponent(searchExpressionContext, expression, callback);
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     @Override
     public void resolveComponents(SearchExpressionContext searchExpressionContext, String expressions,
             ContextCallback callback) {
-        getWrapped().resolveComponents(searchExpressionContext, expressions, callback);
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     @Override
     public void invokeOnComponent(SearchExpressionContext searchExpressionContext, String expression,
             ContextCallback callback) {
-        getWrapped().invokeOnComponent(searchExpressionContext, expression, callback);
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     @Override
     public void invokeOnComponent(SearchExpressionContext searchExpressionContext, UIComponent previous, String expression,
             ContextCallback callback) {
-        getWrapped().invokeOnComponent(searchExpressionContext, previous, expression, callback);
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     @Override
     public boolean isValidExpression(SearchExpressionContext searchExpressionContext, String expression) {
-        return getWrapped().isValidExpression(searchExpressionContext, expression);
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     @Override
     public boolean isPassthroughExpression(SearchExpressionContext searchExpressionContext, String expression) {
-        return getWrapped().isPassthroughExpression(searchExpressionContext, expression);
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     @Override
     public String[] splitExpressions(FacesContext context, String expressions) {
-        return getWrapped().splitExpressions(context, expressions);
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
     
     @Override
     public char[] getExpressionSeperatorChars(FacesContext context) {
-        return getWrapped().getExpressionSeperatorChars(context);
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 }

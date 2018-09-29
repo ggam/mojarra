@@ -25,17 +25,17 @@ import javax.faces.component.UIOutput;
 /**
  * NONE
  * <p>By default, the <code>rendererType</code> property must be set to "<code>javax.faces.Head</code>".
-REPLACE_WITH_EXCEPTION;
+ * This value can be changed by calling the <code>setRendererType()</code> method.</p>
  */
 public class HtmlHead extends UIOutput {
 
 
 
-
+    private static final String OPTIMIZED_PACKAGE = "javax.faces.component.";
 
     public HtmlHead() {
-
-REPLACE_WITH_EXCEPTION;
+        super();
+        setRendererType("javax.faces.Head");
     }
 
 
@@ -67,7 +67,7 @@ REPLACE_WITH_EXCEPTION;
      * care must be taken to have the correct case.
      */
     public java.lang.String getDir() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.dir);
 
     }
 
@@ -76,8 +76,8 @@ REPLACE_WITH_EXCEPTION;
      * @param dir the new property value
      */
     public void setDir(java.lang.String dir) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.dir, dir);
+        handleAttribute("dir", dir);
     }
 
 
@@ -88,7 +88,7 @@ REPLACE_WITH_EXCEPTION;
      * for this component.
      */
     public java.lang.String getLang() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.lang);
 
     }
 
@@ -97,8 +97,8 @@ REPLACE_WITH_EXCEPTION;
      * @param lang the new property value
      */
     public void setLang(java.lang.String lang) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.lang, lang);
+        handleAttribute("lang", lang);
     }
 
 
@@ -110,7 +110,7 @@ REPLACE_WITH_EXCEPTION;
      * </div>
      */
     public java.lang.String getXmlns() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.xmlns);
 
     }
 
@@ -119,16 +119,16 @@ REPLACE_WITH_EXCEPTION;
      * @param xmlns the new property value
      */
     public void setXmlns(java.lang.String xmlns) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.xmlns, xmlns);
+        handleAttribute("xmlns", xmlns);
     }
 
 
-
+    private void handleAttribute(String name, Object value) {
         List<String> setAttributes = (List<String>) this.getAttributes().get("javax.faces.component.UIComponentBase.attributesThatAreSet");
         if (setAttributes == null) {
             String cname = this.getClass().getName();
-
+            if (cname != null && cname.startsWith(OPTIMIZED_PACKAGE)) {
                 setAttributes = new ArrayList<String>(6);
                 this.getAttributes().put("javax.faces.component.UIComponentBase.attributesThatAreSet", setAttributes);
             }

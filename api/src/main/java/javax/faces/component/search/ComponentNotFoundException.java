@@ -34,7 +34,7 @@ public class ComponentNotFoundException extends FacesException {
      * @since 2.3
      */
     public ComponentNotFoundException() {
-        super();
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -46,7 +46,7 @@ public class ComponentNotFoundException extends FacesException {
      * @since 2.3
      */
     public ComponentNotFoundException(String message) {
-        super(message);
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -59,7 +59,7 @@ public class ComponentNotFoundException extends FacesException {
      * @since 2.3
      */
     public ComponentNotFoundException(Throwable cause) {
-        super(cause);
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -72,6 +72,6 @@ public class ComponentNotFoundException extends FacesException {
      * @since 2.3
      */
     public ComponentNotFoundException(String message, Throwable cause) {
-        super(message, cause);
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 }

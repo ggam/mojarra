@@ -25,17 +25,17 @@ import javax.faces.component.UIOutput;
 /**
  * NONE
  * <p>By default, the <code>rendererType</code> property must be set to "<code>javax.faces.Doctype</code>".
-REPLACE_WITH_EXCEPTION;
+ * This value can be changed by calling the <code>setRendererType()</code> method.</p>
  */
 public class HtmlDoctype extends UIOutput {
 
 
 
-
+    private static final String OPTIMIZED_PACKAGE = "javax.faces.component.";
 
     public HtmlDoctype() {
-
-REPLACE_WITH_EXCEPTION;
+        super();
+        setRendererType("javax.faces.Doctype");
     }
 
 
@@ -66,7 +66,7 @@ REPLACE_WITH_EXCEPTION;
      * </div>
      */
     public java.lang.String getPublic() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.publicVal);
 
     }
 
@@ -75,8 +75,8 @@ REPLACE_WITH_EXCEPTION;
      * @param _public the new property value
      */
     public void setPublic(java.lang.String _public) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.publicVal, _public);
+        handleAttribute("public", _public);
     }
 
 
@@ -88,7 +88,7 @@ REPLACE_WITH_EXCEPTION;
      * </div>
      */
     public java.lang.String getRootElement() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.rootElement);
 
     }
 
@@ -97,8 +97,8 @@ REPLACE_WITH_EXCEPTION;
      * @param rootElement the new property value
      */
     public void setRootElement(java.lang.String rootElement) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.rootElement, rootElement);
+        handleAttribute("rootElement", rootElement);
     }
 
 
@@ -110,7 +110,7 @@ REPLACE_WITH_EXCEPTION;
      * </div>
      */
     public java.lang.String getSystem() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.system);
 
     }
 
@@ -119,16 +119,16 @@ REPLACE_WITH_EXCEPTION;
      * @param system the new property value
      */
     public void setSystem(java.lang.String system) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.system, system);
+        handleAttribute("system", system);
     }
 
 
-
+    private void handleAttribute(String name, Object value) {
         List<String> setAttributes = (List<String>) this.getAttributes().get("javax.faces.component.UIComponentBase.attributesThatAreSet");
         if (setAttributes == null) {
             String cname = this.getClass().getName();
-
+            if (cname != null && cname.startsWith(OPTIMIZED_PACKAGE)) {
                 setAttributes = new ArrayList<String>(6);
                 this.getAttributes().put("javax.faces.component.UIComponentBase.attributesThatAreSet", setAttributes);
             }

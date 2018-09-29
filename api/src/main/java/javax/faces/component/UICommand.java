@@ -16,12 +16,9 @@
 
 package javax.faces.component;
 
-import static javax.faces.event.PhaseId.APPLY_REQUEST_VALUES;
-import static javax.faces.event.PhaseId.INVOKE_APPLICATION;
 
 import javax.el.MethodExpression;
 import javax.faces.application.Application;
-import javax.faces.context.FacesContext;
 import javax.faces.event.AbortProcessingException;
 import javax.faces.event.ActionEvent;
 import javax.faces.event.ActionListener;
@@ -92,15 +89,14 @@ public class UICommand extends UIComponentBase implements ActionSource2 {
      * </p>
      */
     public UICommand() {
-        super();
-        setRendererType("javax.faces.Button");
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     // -------------------------------------------------------------- Properties
 
     @Override
     public String getFamily() {
-        return COMPONENT_FAMILY;
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
 
@@ -114,12 +110,12 @@ public class UICommand extends UIComponentBase implements ActionSource2 {
      */
     @Override
     public boolean isImmediate() {
-        return (Boolean) getStateHelper().eval(PropertyKeys.immediate, false);
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     @Override
     public void setImmediate(boolean immediate) {
-        getStateHelper().put(PropertyKeys.immediate, immediate);
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -131,7 +127,7 @@ public class UICommand extends UIComponentBase implements ActionSource2 {
      * @return The object representing the value of this component.
      */
     public Object getValue() {
-        return getStateHelper().eval(PropertyKeys.value);
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -143,7 +139,7 @@ public class UICommand extends UIComponentBase implements ActionSource2 {
      * @param value the new value
      */
     public void setValue(Object value) {
-        getStateHelper().put(PropertyKeys.value, value);
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
 
@@ -151,12 +147,12 @@ public class UICommand extends UIComponentBase implements ActionSource2 {
 
     @Override
     public MethodExpression getActionExpression() {
-        return (MethodExpression) getStateHelper().get(PropertyKeys.actionExpression);
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     @Override
     public void setActionExpression(MethodExpression actionExpression) {
-        getStateHelper().put(PropertyKeys.actionExpression, actionExpression);
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -164,12 +160,12 @@ public class UICommand extends UIComponentBase implements ActionSource2 {
      */
     @Override
     public void addActionListener(ActionListener listener) {
-        addFacesListener(listener);
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     @Override
     public ActionListener[] getActionListeners() {
-        return (ActionListener[]) getFacesListeners(ActionListener.class);
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -177,7 +173,7 @@ public class UICommand extends UIComponentBase implements ActionSource2 {
      */
     @Override
     public void removeActionListener(ActionListener listener) {
-        removeFacesListener(listener);
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
 
@@ -201,20 +197,7 @@ public class UICommand extends UIComponentBase implements ActionSource2 {
      */
     @Override
     public void broadcast(FacesEvent event) throws AbortProcessingException {
-
-        // Perform standard superclass processing (including calling our
-        // ActionListeners)
-        super.broadcast(event);
-
-        if (event instanceof ActionEvent) {
-            FacesContext context = event.getFacesContext();
-
-            // Invoke the default ActionListener
-            ActionListener listener = context.getApplication().getActionListener();
-            if (listener != null) {
-                listener.processAction((ActionEvent) event);
-            }
-        }
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -232,17 +215,7 @@ public class UICommand extends UIComponentBase implements ActionSource2 {
      */
     @Override
     public void queueEvent(FacesEvent event) {
-        UIComponent component = event.getComponent();
-
-        if (event instanceof ActionEvent && component instanceof ActionSource) {
-            if (((ActionSource) component).isImmediate()) {
-                event.setPhaseId(APPLY_REQUEST_VALUES);
-            } else {
-                event.setPhaseId(INVOKE_APPLICATION);
-            }
-        }
-
-        super.queueEvent(event);
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
 }

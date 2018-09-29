@@ -17,7 +17,6 @@
 package javax.faces.component.search;
 
 import java.util.Set;
-import javax.faces.FactoryFinder;
 import javax.faces.component.UIComponent;
 import javax.faces.component.visit.VisitHint;
 import javax.faces.context.FacesContext;
@@ -85,7 +84,7 @@ public abstract class SearchExpressionContext {
      * @since 2.3
      */
     public static SearchExpressionContext createSearchExpressionContext(FacesContext context, UIComponent source) {
-        return createSearchExpressionContext(context, source, null, null);
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -105,9 +104,6 @@ public abstract class SearchExpressionContext {
      */
     public static SearchExpressionContext createSearchExpressionContext(FacesContext context,  UIComponent source,
             Set<SearchExpressionHint> expressionHints, Set<VisitHint> visitHints) {
-
-        SearchExpressionContextFactory factory
-                = (SearchExpressionContextFactory) FactoryFinder.getFactory(FactoryFinder.SEARCH_EXPRESSION_CONTEXT_FACTORY);
-        return factory.getSearchExpressionContext(context, source, expressionHints, visitHints);
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 }

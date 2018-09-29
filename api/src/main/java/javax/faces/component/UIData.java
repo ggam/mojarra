@@ -17,44 +17,19 @@
 package javax.faces.component;
 
 import java.io.IOException;
-import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 
 import javax.el.ValueExpression;
-import javax.enterprise.inject.spi.Bean;
-import javax.enterprise.inject.spi.BeanManager;
-import javax.enterprise.inject.spi.CDI;
-import javax.enterprise.util.AnnotationLiteral;
 import javax.faces.FacesException;
-import javax.faces.application.Application;
-import javax.faces.application.FacesMessage;
 import javax.faces.application.StateManager;
 import javax.faces.component.visit.VisitCallback;
 import javax.faces.component.visit.VisitContext;
-import javax.faces.component.visit.VisitHint;
 import javax.faces.component.visit.VisitResult;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AbortProcessingException;
 import javax.faces.event.FacesEvent;
-import javax.faces.event.PhaseId;
-import javax.faces.event.PostValidateEvent;
-import javax.faces.event.PreValidateEvent;
-import javax.faces.model.ArrayDataModel;
-import javax.faces.model.CollectionDataModel;
 import javax.faces.model.DataModel;
-import javax.faces.model.FacesDataModel;
-import javax.faces.model.IterableDataModel;
 import javax.faces.model.ListDataModel;
-import javax.faces.model.ResultDataModel;
-import javax.faces.model.ResultSetDataModel;
 import javax.faces.model.ScalarDataModel;
-import javax.servlet.jsp.jstl.sql.Result;
 
 
 // ------------------------------------------------------------- Private Classes
@@ -101,10 +76,7 @@ public class UIData extends UIComponentBase
      * values.</p>
      */
     public UIData() {
-
-        super();
-        setRendererType("javax.faces.Table");
-
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     // ------------------------------------------------------ Instance Variables
@@ -162,70 +134,12 @@ public class UIData extends UIComponentBase
         rowStatePreserved
     }
 
-
-    /**
-     * <p>The {@link DataModel} associated with this component, lazily
-     * instantiated if requested.  This object is not part of the saved and
-     * restored state of the component.</p>
-     */
-    private DataModel model = null;
-
-
-    /**
-     * <p> During iteration through the rows of this table, This ivar is used to
-     * store the previous "var" value for this instance.  When the row iteration
-     * is complete, this value is restored to the request map.
-     */
-    private Object oldVar;
-
-
-    /**
-     * <p>Holds the base client ID that will be used to generate per-row
-     * client IDs (this will be null if this UIData is nested within another).</p>
-     *
-     * <p>This is not part of the component state.</p>
-     */
-    private String baseClientId = null;
-
-
-    /**
-     * <p> Length of the cached <code>baseClientId</code> plus one for
-     * the {@link UINamingContainer#getSeparatorChar}. </p>
-     *
-     * <p>This is not part of the component state.</p>
-     */
-    private int baseClientIdLength;
-
-
-    /**
-     * <p>StringBuilder used to build per-row client IDs.</p>
-     *
-     * <p>This is not part of the component state.</p>
-     */
-    private StringBuilder clientIdBuilder = null;
-
-
-    /**
-     * <p>Flag indicating whether or not this UIData instance is nested
-     * within another UIData instance</p>
-     *
-     * <p>This is not part of the component state.</p>
-     */
-    private Boolean isNested = null;
-
-    private Map<String, Object> _rowDeltaStates = new HashMap<>();
-    private Map<String, Object> _rowTransientStates = new HashMap<>();
-
-    private Object _initialDescendantFullComponentState = null;
-
     // -------------------------------------------------------------- Properties
 
 
     @Override
     public String getFamily() {
-
-        return (COMPONENT_FAMILY);
-
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
 
@@ -236,9 +150,7 @@ public class UIData extends UIComponentBase
      * @return the row number.
      */
     public int getFirst() {
-
-        return (Integer) getStateHelper().eval(PropertyKeys.first, 0);
-
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
 
@@ -251,12 +163,7 @@ public class UIData extends UIComponentBase
      * @throws IllegalArgumentException if <code>first</code> is negative
      */
     public void setFirst(int first) {
-
-        if (first < 0) {
-            throw new IllegalArgumentException(String.valueOf(first));
-        }
-        getStateHelper().put(PropertyKeys.first, first);
-
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
 
@@ -267,9 +174,7 @@ public class UIData extends UIComponentBase
      * @return the footer facet.
      */
     public UIComponent getFooter() {
-
-        return getFacet("footer");
-
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
 
@@ -282,9 +187,7 @@ public class UIData extends UIComponentBase
      * @throws NullPointerException if <code>footer</code> is <code>null</code>
      */
     public void setFooter(UIComponent footer) {
-
-        getFacets().put("footer", footer);
-
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
 
@@ -295,9 +198,7 @@ public class UIData extends UIComponentBase
      * @return the header facet.
      */
     public UIComponent getHeader() {
-
-        return getFacet("header");
-
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
 
@@ -310,9 +211,7 @@ public class UIData extends UIComponentBase
      * @throws NullPointerException if <code>header</code> is <code>null</code>
      */
     public void setHeader(UIComponent header) {
-
-        getFacets().put("header", header);
-
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
 
@@ -326,9 +225,7 @@ public class UIData extends UIComponentBase
      * @throws FacesException if an error occurs getting the row availability
      */
     public boolean isRowAvailable() {
-
-        return (getDataModel().isRowAvailable());
-
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
 
@@ -340,9 +237,7 @@ public class UIData extends UIComponentBase
      * @throws FacesException if an error occurs getting the row count
      */
     public int getRowCount() {
-
-        return (getDataModel().getRowCount());
-
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
 
@@ -357,9 +252,7 @@ public class UIData extends UIComponentBase
      *                                  currently specified row index
      */
     public Object getRowData() {
-
-        return (getDataModel().getRowData());
-
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
 
@@ -373,9 +266,7 @@ public class UIData extends UIComponentBase
      * @throws FacesException if an error occurs getting the row index
      */
     public int getRowIndex() {
-
-        return (Integer) getStateHelper().eval(PropertyKeys.rowIndex, -1);
-
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
 
@@ -456,141 +347,7 @@ public class UIData extends UIComponentBase
      */
     public void setRowIndex(int rowIndex)
     {
-        if (isRowStatePreserved())
-        {
-            setRowIndexRowStatePreserved(rowIndex);
-        }
-        else
-        {
-            setRowIndexWithoutRowStatePreserved(rowIndex);
-        }
-    }
-
-    private void setRowIndexWithoutRowStatePreserved(int rowIndex){
-        // Save current state for the previous row index
-        saveDescendantState();
-
-        // Update to the new row index
-        //this.rowIndex = rowIndex;
-        getStateHelper().put(PropertyKeys.rowIndex, rowIndex);
-        DataModel localModel = getDataModel();
-        localModel.setRowIndex(rowIndex);
-
-        // if rowIndex is -1, clear the cache
-        if (rowIndex == -1) {
-            setDataModel(null);
-        }
-
-        // Clear or expose the current row data as a request scope attribute
-        String var = (String) getStateHelper().get(PropertyKeys.var);
-        if (var != null) {
-            Map<String, Object> requestMap =
-                  getFacesContext().getExternalContext().getRequestMap();
-            if (rowIndex == -1) {
-                oldVar = requestMap.remove(var);
-            } else if (isRowAvailable()) {
-                requestMap.put(var, getRowData());
-            } else {
-                requestMap.remove(var);
-                if (null != oldVar) {
-                    requestMap.put(var, oldVar);
-                    oldVar = null;
-                }
-            }
-        }
-
-        // Reset current state information for the new row index
-        restoreDescendantState();
-
-    }
-
-    private void setRowIndexRowStatePreserved(int rowIndex)
-    {
-        if (rowIndex < -1)
-        {
-            throw new IllegalArgumentException("rowIndex is less than -1");
-        }
-
-        if (getRowIndex() == rowIndex)
-        {
-            return;
-        }
-
-        FacesContext facesContext = getFacesContext();
-
-        if (_initialDescendantFullComponentState != null)
-        {
-            //Just save the row
-            Map<String, Object> sm = saveFullDescendantComponentStates(facesContext, null, getChildren().iterator(), false);
-            if (sm != null && !sm.isEmpty())
-            {
-                _rowDeltaStates.put(getContainerClientId(facesContext), sm);
-            }
-            if (getRowIndex() != -1)
-            {
-                _rowTransientStates.put(getContainerClientId(facesContext), saveTransientDescendantComponentStates(facesContext, null, getChildren().iterator(), false));
-            }
-        }
-
-        // Update to the new row index
-        //this.rowIndex = rowIndex;
-        getStateHelper().put(PropertyKeys.rowIndex, rowIndex);
-        DataModel localModel = getDataModel();
-        localModel.setRowIndex(rowIndex);
-
-        // if rowIndex is -1, clear the cache
-        if (rowIndex == -1) {
-            setDataModel(null);
-        }
-
-        // Clear or expose the current row data as a request scope attribute
-        String var = (String) getStateHelper().get(PropertyKeys.var);
-        if (var != null) {
-            Map<String, Object> requestMap =
-                  getFacesContext().getExternalContext().getRequestMap();
-            if (rowIndex == -1) {
-                oldVar = requestMap.remove(var);
-            } else if (isRowAvailable()) {
-                requestMap.put(var, getRowData());
-            } else {
-                requestMap.remove(var);
-                if (null != oldVar) {
-                    requestMap.put(var, oldVar);
-                    oldVar = null;
-                }
-            }
-        }
-
-        if (_initialDescendantFullComponentState != null)
-        {
-            Object rowState = _rowDeltaStates.get(getContainerClientId(facesContext));
-            if (rowState == null)
-            {
-                //Restore as original
-                restoreFullDescendantComponentStates(facesContext, getChildren().iterator(), _initialDescendantFullComponentState, false);
-            }
-            else
-            {
-                //Restore first original and then delta
-                restoreFullDescendantComponentDeltaStates(facesContext, getChildren().iterator(), rowState, _initialDescendantFullComponentState, false);
-            }
-            if (getRowIndex() == -1)
-            {
-                restoreTransientDescendantComponentStates(facesContext, getChildren().iterator(), null, false);
-            }
-            else
-            {
-                rowState = _rowTransientStates.get(getContainerClientId(facesContext));
-                if (rowState == null)
-                {
-                    restoreTransientDescendantComponentStates(facesContext, getChildren().iterator(), null, false);
-                }
-                else
-                {
-                    restoreTransientDescendantComponentStates(facesContext, getChildren().iterator(), (Map<String, Object>) rowState, false);
-                }
-            }
-        }
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -600,10 +357,7 @@ public class UIData extends UIComponentBase
      * @return the number of rows.
      */
     public int getRows() {
-
-
-        return (Integer) getStateHelper().eval(PropertyKeys.rows, 0);
-
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
 
@@ -616,12 +370,7 @@ public class UIData extends UIComponentBase
      * @throws IllegalArgumentException if <code>rows</code> is negative
      */
     public void setRows(int rows) {
-
-        if (rows < 0) {
-            throw new IllegalArgumentException(String.valueOf(rows));
-        }
-        getStateHelper().put(PropertyKeys.rows, rows);
-
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
 
@@ -633,9 +382,7 @@ public class UIData extends UIComponentBase
      *  @return he request-scope attribute.
      */
     public String getVar() {
-
-        return (String) getStateHelper().get(PropertyKeys.var);
-
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
 
@@ -646,9 +393,7 @@ public class UIData extends UIComponentBase
      * @param var The new request-scope attribute name
      */
     public void setVar(String var) {
-
-        getStateHelper().put(PropertyKeys.var, var);
-
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -663,8 +408,7 @@ public class UIData extends UIComponentBase
 
     public boolean isRowStatePreserved()
     {
-        Boolean b = (Boolean) getStateHelper().get(PropertyKeys.rowStatePreserved);
-        return b == null ? false : b.booleanValue();
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -702,7 +446,7 @@ public class UIData extends UIComponentBase
 
     public void setRowStatePreserved(boolean preserveComponentState)
     {
-        getStateHelper().put(PropertyKeys.rowStatePreserved, preserveComponentState);
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
 
@@ -729,9 +473,7 @@ public class UIData extends UIComponentBase
      *  @return the object for the value.
      */
     public Object getValue() {
-
-        return getStateHelper().eval(PropertyKeys.value);
-
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
 
@@ -743,9 +485,7 @@ public class UIData extends UIComponentBase
      * @param value the new value
      */
     public void setValue(Object value) {
-        setDataModel(null);
-        getStateHelper().put(PropertyKeys.value, value);
-
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     // ----------------------------------------------------- UIComponent Methods
@@ -771,19 +511,7 @@ public class UIData extends UIComponentBase
      */
     @Override
     public void setValueExpression(String name, ValueExpression binding) {
-
-        if (null != name) {
-            switch (name) {
-                case "value":
-                    this.model = null;
-                    break;
-                case "var":
-                case "rowIndex":
-                    throw new IllegalArgumentException();
-            }
-        }
-        super.setValueExpression(name, binding);
-
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -798,67 +526,7 @@ public class UIData extends UIComponentBase
      */
     @Override
     public String getClientId(FacesContext context) {
-
-        if (context == null) {
-            throw new NullPointerException();
-        }
-
-        // If baseClientId and clientIdBuilder are both null, this is the
-        // first time that getClientId() has been called.
-        // If we're not nested within another UIData, then:
-        //   - create a new StringBuilder assigned to clientIdBuilder containing
-        //   our client ID.
-        //   - toString() the builder - this result will be our baseClientId
-        //     for the duration of the component
-        //   - append UINamingContainer.getSeparatorChar() to the builder
-        //  If we are nested within another UIData, then:
-        //   - create an empty StringBuilder that will be used to build
-        //     this instance's ID
-        if (baseClientId == null && clientIdBuilder == null) {
-            if (!isNestedWithinIterator()) {
-                clientIdBuilder = new StringBuilder(super.getClientId(context));
-                baseClientId = clientIdBuilder.toString();
-                baseClientIdLength = (baseClientId.length() + 1);
-                clientIdBuilder.append(UINamingContainer.getSeparatorChar(context));
-                clientIdBuilder.setLength(baseClientIdLength);
-            } else {
-                clientIdBuilder = new StringBuilder();
-            }
-        }
-        int rowIndex = getRowIndex();
-        if (rowIndex >= 0) {
-            String cid;
-            if (!isNestedWithinIterator()) {
-                // we're not nested, so the clientIdBuilder is already
-                // primed with clientID +
-                // UINamingContainer.getSeparatorChar().  Append the
-                // current rowIndex, and toString() the builder.  reset
-                // the builder to it's primed state.
-                cid = clientIdBuilder.append(rowIndex).toString();
-                clientIdBuilder.setLength(baseClientIdLength);
-            } else {
-                // we're nested, so we have to build the ID from scratch
-                // each time.  Reuse the same clientIdBuilder instance
-                // for each call by resetting the length to 0 after
-                // the ID has been computed.
-                cid = clientIdBuilder.append(super.getClientId(context))
-                      .append(UINamingContainer.getSeparatorChar(context)).append(rowIndex)
-                      .toString();
-                clientIdBuilder.setLength(0);
-            }
-            return (cid);
-        } else {
-            if (!isNestedWithinIterator()) {
-                // Not nested and no row available, so just return our baseClientId
-                return (baseClientId);
-            } else {
-                // nested and no row available, return the result of getClientId().
-                // this is necessary as the client ID will reflect the row that
-                // this table represents
-                return super.getClientId(context);
-            }
-        }
-
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -900,127 +568,7 @@ public class UIData extends UIComponentBase
     public boolean invokeOnComponent(FacesContext context, String clientId,
                                      ContextCallback callback)
           throws FacesException {
-        if (null == context || null == clientId || null == callback) {
-            throw new NullPointerException();
-        }
-
-        String myId = super.getClientId(context);
-        boolean found = false;
-        if (clientId.equals(myId)) {
-            try {
-                this.pushComponentToEL(context, compositeParent);
-                callback.invokeContextCallback(context, this);
-                return true;
-            }
-            catch (Exception e) {
-                throw new FacesException(e);
-            }
-            finally {
-                this.popComponentFromEL(context);
-            }
-        }
-
-        // check the facets, if any, of UIData
-        if (this.getFacetCount() > 0) {
-            for (UIComponent c : this.getFacets().values()) {
-                if (clientId.equals(c.getClientId(context))) {
-                    callback.invokeContextCallback(context, c);
-                    return true;
-                }
-            }
-        }
-
-        // check column level facets, if any
-        if (this.getChildCount() > 0) {
-            for (UIComponent column : this.getChildren()) {
-                if (column instanceof UIColumn) {
-                    if (column.getFacetCount() > 0) {
-                        for (UIComponent facet : column.getFacets().values()) {
-                            if (facet.invokeOnComponent(context, clientId, callback)) {
-                                return true;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        /*
-         * Check if we are looking for a component that is part of the
-         * actual skeleton.
-         */
-        if (this.getChildCount() > 0) {
-            for (UIComponent column : this.getChildren()) {
-                if (column instanceof UIColumn) {
-                    if (column.invokeOnComponent(context, clientId, callback)) {
-                        return true;
-                    }
-                }
-            }
-        }
-
-        int lastSep, newRow, savedRowIndex = this.getRowIndex();
-        try {
-            char sepChar = UINamingContainer.getSeparatorChar(context);
-            // If we need to strip out the rowIndex from our id
-            // PENDING(edburns): is this safe with respect to I18N?
-            if (myId.endsWith(sepChar + Integer.toString(savedRowIndex, 10))) {
-                lastSep = myId.lastIndexOf(sepChar);
-                assert (-1 != lastSep);
-                myId = myId.substring(0, lastSep);
-            }
-
-            // myId will be something like form:outerData for a non-nested table,
-            // and form:outerData:3:data for a nested table.
-            // clientId will be something like form:outerData:3:outerColumn
-            // for a non-nested table.  clientId will be something like
-            // outerData:3:data:3:input for a nested table.
-            if (clientId.startsWith(myId)) {
-                int preRowIndexSep, postRowIndexSep;
-
-                if (-1 != (preRowIndexSep =
-                      clientId.indexOf(sepChar,
-                                       myId.length()))) {
-                    // Check the length
-                    if (++preRowIndexSep < clientId.length()) {
-                        if (-1 != (postRowIndexSep =
-                              clientId.indexOf(sepChar,
-                                               preRowIndexSep + 1))) {
-                            try {
-                                newRow = Integer
-                                        .parseInt(clientId.substring(preRowIndexSep,
-                                                postRowIndexSep));
-                            } catch (NumberFormatException ex) {
-                                // PENDING(edburns): I18N
-                                String message =
-                                      "Trying to extract rowIndex from clientId \'"
-                                      +
-                                      clientId
-                                      + "\' "
-                                      + ex.getMessage();
-                                throw new NumberFormatException(message);
-                            }
-                            this.setRowIndex(newRow);
-                            if (this.isRowAvailable()) {
-                                found = super.invokeOnComponent(context,
-                                                                clientId,
-                                                                callback);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        catch (FacesException fe) {
-            throw fe;
-        }
-        catch (NumberFormatException e) {
-            throw new FacesException(e);
-        }
-        finally {
-            this.setRowIndex(savedRowIndex);
-        }
-        return found;
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
 
@@ -1037,9 +585,7 @@ public class UIData extends UIComponentBase
      */
     @Override
     public void queueEvent(FacesEvent event) {
-
-        super.queueEvent(new WrapperEvent(this, event, getRowIndex()));
-
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
 
@@ -1063,39 +609,7 @@ public class UIData extends UIComponentBase
     @Override
     public void broadcast(FacesEvent event)
           throws AbortProcessingException {
-
-        if (!(event instanceof WrapperEvent)) {
-            super.broadcast(event);
-            return;
-        }
-        FacesContext context = event.getFacesContext();
-        // Set up the correct context and fire our wrapped event
-        WrapperEvent revent = (WrapperEvent) event;
-        if (isNestedWithinIterator()) {
-            setDataModel(null);
-        }
-        int oldRowIndex = getRowIndex();
-        setRowIndex(revent.getRowIndex());
-        FacesEvent rowEvent = revent.getFacesEvent();
-        UIComponent source = rowEvent.getComponent();
-        UIComponent compositeParent = null;
-        try {
-            if (!UIComponent.isCompositeComponent(source)) {
-                compositeParent = UIComponent.getCompositeComponentParent(source);
-            }
-            if (compositeParent != null) {
-                compositeParent.pushComponentToEL(context, null);
-            }
-            source.pushComponentToEL(context, null);
-            source.broadcast(rowEvent);
-        } finally {
-            source.popComponentFromEL(context);
-            if (compositeParent != null) {
-                compositeParent.popComponentFromEL(context);
-            }
-        }
-        setRowIndex(oldRowIndex);
-
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -1111,10 +625,7 @@ public class UIData extends UIComponentBase
      */
     @Override
     public void encodeBegin(FacesContext context) throws IOException {
-
-        preEncode(context);
-        super.encodeBegin(context);
-
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
 
@@ -1147,20 +658,7 @@ public class UIData extends UIComponentBase
      */
     @Override
     public void processDecodes(FacesContext context) {
-
-        if (context == null) {
-            throw new NullPointerException();
-        }
-        if (!isRendered()) {
-            return;
-        }
-
-        pushComponentToEL(context, this);
-        preDecode(context);
-        iterate(context, PhaseId.APPLY_REQUEST_VALUES);
-        decode(context);
-        popComponentFromEL(context);
-
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
 
@@ -1191,21 +689,7 @@ public class UIData extends UIComponentBase
      */
     @Override
     public void processValidators(FacesContext context) {
-
-        if (context == null) {
-            throw new NullPointerException();
-        }
-        if (!isRendered()) {
-            return;
-        }
-        pushComponentToEL(context, this);
-        Application app = context.getApplication();
-        app.publishEvent(context, PreValidateEvent.class, this);
-        preValidate(context);
-        iterate(context, PhaseId.PROCESS_VALIDATIONS);
-        app.publishEvent(context, PostValidateEvent.class, this);
-        popComponentFromEL(context);
-
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
 
@@ -1242,28 +726,12 @@ public class UIData extends UIComponentBase
      */
     @Override
     public void processUpdates(FacesContext context) {
-
-        if (context == null) {
-            throw new NullPointerException();
-        }
-        if (!isRendered()) {
-            return;
-        }
-
-        pushComponentToEL(context, this);
-        preUpdate(context);
-        iterate(context, PhaseId.UPDATE_MODEL_VALUES);
-        popComponentFromEL(context);
-        // This is not a EditableValueHolder, so no further processing is required
-
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     @Override
     public String createUniqueId(FacesContext context, String seed) {
-        Integer i = (Integer) getStateHelper().get(PropertyKeys.lastId);
-        int lastId = ((i != null) ? i : 0);
-        getStateHelper().put(PropertyKeys.lastId,  ++lastId);
-        return UIViewRoot.UNIQUE_ID_PREFIX + (seed == null ? lastId : seed);
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -1385,72 +853,7 @@ public class UIData extends UIComponentBase
     public boolean visitTree(VisitContext context,
                              VisitCallback callback) {
 
-        // First check to see whether we are visitable.  If not
-        // short-circuit out of this subtree, though allow the
-        // visit to proceed through to other subtrees.
-        if (!isVisitable(context))
-            return false;
-
-        FacesContext facesContext = context.getFacesContext();
-        // NOTE: that the visitRows local will be obsolete once the
-        //       appropriate visit hints have been added to the API
-        boolean visitRows = requiresRowIteration(context);
-
-        // Clear out the row index is one is set so that
-        // we start from a clean slate.
-        int oldRowIndex = -1;
-        if (visitRows) {
-            oldRowIndex = getRowIndex();
-            setRowIndex(-1);
-        }
-
-        // Push ourselves to EL
-        pushComponentToEL(facesContext, null);
-
-        try {
-
-            // Visit ourselves.  Note that we delegate to the
-            // VisitContext to actually perform the visit.
-            VisitResult result = context.invokeVisitCallback(this, callback);
-
-            // If the visit is complete, short-circuit out and end the visit
-            if (result == VisitResult.COMPLETE)
-                return true;
-
-            // Visit children, short-circuiting as necessary
-            // NOTE: that the visitRows parameter will be obsolete once the
-            //       appropriate visit hints have been added to the API
-            if ((result == VisitResult.ACCEPT) && doVisitChildren(context, visitRows)) {
-
-                // First visit facets
-                // NOTE: that the visitRows parameter will be obsolete once the
-                //       appropriate visit hints have been added to the API
-                if (visitFacets(context, callback, visitRows))
-                    return true;
-
-                // Next column facets
-                // NOTE: that the visitRows parameter will be obsolete once the
-                //       appropriate visit hints have been added to the API
-                if (visitColumnsAndColumnFacets(context, callback, visitRows))
-                    return true;
-
-                // And finally, visit rows
-                // NOTE: that the visitRows parameter will be obsolete once the
-                //       appropriate visit hints have been added to the API
-                if (visitRows(context, callback, visitRows))
-                    return true;
-            }
-        }
-        finally {
-            // Clean up - pop EL and restore old row index
-            popComponentFromEL(facesContext);
-            if (visitRows) {
-                setRowIndex(oldRowIndex);
-            }
-        }
-
-        // Return false to allow the visit to continue
-        return false;
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -1471,319 +874,19 @@ public class UIData extends UIComponentBase
     @Override
     public void markInitialState()
     {
-        if (isRowStatePreserved())
-        {
-            if (getFacesContext().getAttributes().containsKey(StateManager.IS_BUILDING_INITIAL_STATE))
-            {
-                _initialDescendantFullComponentState = saveDescendantInitialComponentStates(getFacesContext(), getChildren().iterator(), false);
-            }
-        }
-        super.markInitialState();
-    }
-
-    private void restoreFullDescendantComponentStates(FacesContext facesContext,
-            Iterator<UIComponent> childIterator, Object state,
-            boolean restoreChildFacets)
-    {
-        Iterator<? extends Object[]> descendantStateIterator = null;
-        while (childIterator.hasNext())
-        {
-            if (descendantStateIterator == null && state != null)
-            {
-                descendantStateIterator = ((Collection<? extends Object[]>) state)
-                        .iterator();
-            }
-            UIComponent component = childIterator.next();
-
-            // reset the client id (see spec 3.1.6)
-            component.setId(component.getId());
-            if (!component.isTransient())
-            {
-                Object childState = null;
-                Object descendantState = null;
-                if (descendantStateIterator != null
-                        && descendantStateIterator.hasNext())
-                {
-                    Object[] object = descendantStateIterator.next();
-                    childState = object[0];
-                    descendantState = object[1];
-                }
-
-                component.clearInitialState();
-                component.restoreState(facesContext, childState);
-                component.markInitialState();
-
-                Iterator<UIComponent> childsIterator;
-                if (restoreChildFacets)
-                {
-                    childsIterator = component.getFacetsAndChildren();
-                }
-                else
-                {
-                    childsIterator = component.getChildren().iterator();
-                }
-                restoreFullDescendantComponentStates(facesContext, childsIterator,
-                        descendantState, true);
-            }
-        }
-    }
-
-    private Collection<Object[]> saveDescendantInitialComponentStates(FacesContext facesContext,
-            Iterator<UIComponent> childIterator, boolean saveChildFacets)
-    {
-        Collection<Object[]> childStates = null;
-        while (childIterator.hasNext())
-        {
-            if (childStates == null)
-            {
-                childStates = new ArrayList<>();
-            }
-
-            UIComponent child = childIterator.next();
-            if (!child.isTransient())
-            {
-                // Add an entry to the collection, being an array of two
-                // elements. The first element is the state of the children
-                // of this component; the second is the state of the current
-                // child itself.
-
-                Iterator<UIComponent> childsIterator;
-                if (saveChildFacets)
-                {
-                    childsIterator = child.getFacetsAndChildren();
-                }
-                else
-                {
-                    childsIterator = child.getChildren().iterator();
-                }
-                Object descendantState = saveDescendantInitialComponentStates(
-                        facesContext, childsIterator, true);
-                Object state = child.saveState(facesContext);
-                childStates.add(new Object[] { state, descendantState });
-            }
-        }
-        return childStates;
-    }
-
-    private Map<String,Object> saveFullDescendantComponentStates(FacesContext facesContext, Map<String,Object> stateMap,
-            Iterator<UIComponent> childIterator, boolean saveChildFacets)
-    {
-        while (childIterator.hasNext())
-        {
-            UIComponent child = childIterator.next();
-            if (!child.isTransient())
-            {
-                Iterator<UIComponent> childsIterator;
-                if (saveChildFacets)
-                {
-                    childsIterator = child.getFacetsAndChildren();
-                }
-                else
-                {
-                    childsIterator = child.getChildren().iterator();
-                }
-                stateMap = saveFullDescendantComponentStates(facesContext, stateMap,
-                        childsIterator, true);
-                Object state = child.saveState(facesContext);
-                if (state != null)
-                {
-                    if (stateMap == null)
-                    {
-                        stateMap = new HashMap<>();
-                    }
-                    stateMap.put(child.getClientId(facesContext), state);
-                }
-            }
-        }
-        return stateMap;
-    }
-
-    private void restoreFullDescendantComponentDeltaStates(FacesContext facesContext,
-            Iterator<UIComponent> childIterator, Object state, Object initialState,
-            boolean restoreChildFacets)
-    {
-        Map<String,Object> descendantStateIterator = null;
-        Iterator<? extends Object[]> descendantFullStateIterator = null;
-        while (childIterator.hasNext())
-        {
-            if (descendantStateIterator == null && state != null)
-            {
-                descendantStateIterator = (Map<String,Object>) state;
-            }
-            if (descendantFullStateIterator == null && initialState != null)
-            {
-                descendantFullStateIterator = ((Collection<? extends Object[]>) initialState).iterator();
-            }
-            UIComponent component = childIterator.next();
-
-            // reset the client id (see spec 3.1.6)
-            component.setId(component.getId());
-            if (!component.isTransient())
-            {
-                Object childInitialState = null;
-                Object descendantInitialState = null;
-                Object childState = null;
-                if (descendantStateIterator != null
-                        && descendantStateIterator.containsKey(component.getClientId(facesContext)))
-                {
-                    //Object[] object = (Object[]) descendantStateIterator.get(component.getClientId(facesContext));
-                    //childState = object[0];
-                    childState = descendantStateIterator.get(component.getClientId(facesContext));
-                }
-                if (descendantFullStateIterator != null
-                        && descendantFullStateIterator.hasNext())
-                {
-                    Object[] object = descendantFullStateIterator.next();
-                    childInitialState = object[0];
-                    descendantInitialState = object[1];
-                }
-
-                component.clearInitialState();
-                if (childInitialState != null)
-                {
-                    component.restoreState(facesContext, childInitialState);
-                    component.markInitialState();
-                    component.restoreState(facesContext, childState);
-                }
-                else
-                {
-                    component.restoreState(facesContext, childState);
-                    component.markInitialState();
-                }
-
-                Iterator<UIComponent> childsIterator;
-                if (restoreChildFacets)
-                {
-                    childsIterator = component.getFacetsAndChildren();
-                }
-                else
-                {
-                    childsIterator = component.getChildren().iterator();
-                }
-                restoreFullDescendantComponentDeltaStates(facesContext, childsIterator,
-                        state, descendantInitialState , true);
-            }
-        }
-    }
-
-    private void restoreTransientDescendantComponentStates(FacesContext facesContext, Iterator<UIComponent> childIterator, Map<String, Object> state,
-            boolean restoreChildFacets)
-    {
-        while (childIterator.hasNext())
-        {
-            UIComponent component = childIterator.next();
-
-            // reset the client id (see spec 3.1.6)
-            component.setId(component.getId());
-            if (!component.isTransient())
-            {
-                component.restoreTransientState(facesContext, (state == null) ? null : state.get(component.getClientId(facesContext)));
-
-                Iterator<UIComponent> childsIterator;
-                if (restoreChildFacets)
-                {
-                    childsIterator = component.getFacetsAndChildren();
-                }
-                else
-                {
-                    childsIterator = component.getChildren().iterator();
-                }
-                restoreTransientDescendantComponentStates(facesContext, childsIterator, state, true);
-            }
-        }
-
-    }
-
-    private Map<String, Object> saveTransientDescendantComponentStates(FacesContext facesContext, Map<String, Object> childStates, Iterator<UIComponent> childIterator,
-            boolean saveChildFacets)
-    {
-        while (childIterator.hasNext())
-        {
-            UIComponent child = childIterator.next();
-            if (!child.isTransient())
-            {
-                Iterator<UIComponent> childsIterator;
-                if (saveChildFacets)
-                {
-                    childsIterator = child.getFacetsAndChildren();
-                }
-                else
-                {
-                    childsIterator = child.getChildren().iterator();
-                }
-                childStates = saveTransientDescendantComponentStates(facesContext, childStates, childsIterator, true);
-                Object state = child.saveTransientState(facesContext);
-                if (state != null)
-                {
-                    if (childStates == null)
-                    {
-                        childStates = new HashMap<>();
-                    }
-                    childStates.put(child.getClientId(facesContext), state);
-                }
-            }
-        }
-        return childStates;
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     @Override
     public void restoreState(FacesContext context, Object state)
     {
-        if (state == null)
-        {
-            return;
-        }
-
-        Object values[] = (Object[]) state;
-        super.restoreState(context, values[0]);
-        Object restoredRowStates = UIComponentBase.restoreAttachedState(context, values[1]);
-        if (restoredRowStates == null)
-        {
-            if (!_rowDeltaStates.isEmpty())
-            {
-                _rowDeltaStates.clear();
-            }
-        }
-        else
-        {
-            _rowDeltaStates = (Map<String, Object>) restoredRowStates;
-        }
-    }
-
-    private void resetClientIds(UIComponent component) {
-        Iterator<UIComponent> iterator = component.getFacetsAndChildren();
-        while(iterator.hasNext()) {
-            UIComponent child = iterator.next();
-            resetClientIds(child);
-            child.setId(child.getId());
-        }
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     @Override
     public Object saveState(FacesContext context)
     {
-        resetClientIds(this);
-
-        if (initialStateMarked()) {
-            Object superState = super.saveState(context);
-
-            if (superState == null && _rowDeltaStates.isEmpty()) {
-                return null;
-            }
-            else {
-                Object values[] = null;
-                Object attachedState = UIComponentBase.saveAttachedState(context, _rowDeltaStates);
-                if (superState != null || attachedState != null) {
-                    values = new Object[] { superState, attachedState };
-                }
-                return values;
-            }
-        } else {
-            Object values[] = new Object[2];
-            values[0] = super.saveState(context);
-            values[1] = UIComponentBase.saveAttachedState(context, _rowDeltaStates);
-            return values;
-        }
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     // --------------------------------------------------------- Protected Methods
@@ -1802,99 +905,7 @@ public class UIData extends UIComponentBase
      * @return the data model.
      */
     protected DataModel getDataModel() {
-
-        // Return any previously cached DataModel instance
-        if (this.model != null) {
-            return (model);
-        }
-
-        // Synthesize a DataModel around our current value if possible
-        Object current = getValue();
-        if (current == null) {
-            setDataModel(new ListDataModel(Collections.EMPTY_LIST));
-        } else if (current instanceof DataModel) {
-            setDataModel((DataModel) current);
-        } else if (current instanceof List) {
-            setDataModel(new ListDataModel((List) current));
-        } else if (Object[].class.isAssignableFrom(current.getClass())) {
-            setDataModel(new ArrayDataModel((Object[]) current));
-        } else if (current instanceof ResultSet) {
-            setDataModel(new ResultSetDataModel((ResultSet) current));
-        } else if (current instanceof Result) {
-            setDataModel(new ResultDataModel((Result) current));
-        } else if (current instanceof Collection) {
-            setDataModel(new CollectionDataModel((Collection) current));
-        } else if (current instanceof Iterable) {
-            setDataModel(new IterableDataModel<>((Iterable<?>) current));
-        } else if (current instanceof Map) {
-            setDataModel(new IterableDataModel<>(((Map<?, ?>) current).entrySet()));
-        } else {
-            DataModel<?> dataModel = createDataModel(current.getClass());
-            if (dataModel != null) {
-                dataModel.setWrappedData(current);
-                setDataModel(dataModel);
-            } else {
-                setDataModel(new ScalarDataModel(current));
-            }
-        }
-        return (model);
-
-    }
-
-    @SuppressWarnings("all")
-    static private class FacesDataModelAnnotationLiteral extends AnnotationLiteral<FacesDataModel> implements FacesDataModel {
-        private static final long serialVersionUID = 1L;
-
-        /**
-         * Stores the forClass attribute.
-         */
-        private final Class<?> forClass;
-
-        public FacesDataModelAnnotationLiteral(Class<?> forClass) {
-            this.forClass = forClass;
-        }
-
-        @Override
-        public Class<?> forClass() {
-            return forClass;
-        }
-    }
-
-    private DataModel<?> createDataModel(final Class<?> forClass) {
-
-        List<DataModel<?>> dataModel = new ArrayList<DataModel<?>>(1);
-        CDI<Object> cdi = CDI.current();
-
-        // Scan the map in order, the first class that is a super class or equal to the class for which
-        // we're looking for a DataModel is the closest match, since the Map is sorted on inheritance relation
-        getDataModelClassesMap(cdi).entrySet().stream()
-            .filter(e -> e.getKey().isAssignableFrom(forClass))
-            .findFirst()
-            .ifPresent(
-
-                 // Get the bean from CDI which is of the class type that we found during annotation scanning
-                 // and has the @FacesDataModel annotation, with the "forClass" attribute set to the closest
-                 // super class of our target class.
-
-                e -> dataModel.add(
-                    cdi.select(
-                        e.getValue(),
-                        new FacesDataModelAnnotationLiteral(e.getKey())
-                    ).get())
-            );
-
-        return dataModel.isEmpty()? null : dataModel.get(0);
-    }
-
-    @SuppressWarnings("unchecked")
-    private Map<Class<?>, Class<? extends DataModel<?>>> getDataModelClassesMap(CDI<Object> cdi) {
-        BeanManager beanManager = cdi.getBeanManager();
-
-        // Get the Map with classes for which a custom DataModel implementation is available from CDI
-        Bean<?> bean = beanManager.resolve(beanManager.getBeans("comSunFacesDataModelClassesMap"));
-        Object beanReference = beanManager.getReference(bean, Map.class, beanManager.createCreationalContext(bean));
-
-        return (Map<Class<?>, Class<? extends DataModel<?>>>) beanReference;
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -1916,481 +927,7 @@ public class UIData extends UIComponentBase
      */
 
     protected void setDataModel(DataModel dataModel) {
-        this.model = dataModel;
-    }
-
-    // ---------------------------------------------------- Private Methods
-
-
-    /**
-     * Called by {@link UIData#visitTree} to determine whether or not the
-     * <code>visitTree</code> implementation should visit the rows of UIData
-     * or by manipulating the row index before visiting the components themselves.
-     *
-     * Once we have the appropriate Visit hints for state saving, this method
-     * will become obsolete.
-     *
-     * @param ctx the <code>FacesContext</code> for the current request
-     *
-     * @return true if row index manipulation is required by the visit to this
-     *  UIData instance
-     */
-    private boolean requiresRowIteration(VisitContext ctx) {
-
-        return !ctx.getHints().contains(VisitHint.SKIP_ITERATION);
-
-    }
-
-
-    // Perform pre-decode initialization work.  Note that this
-    // initialization may be performed either during a normal decode
-    // (ie. processDecodes()) or during a tree visit (ie. visitTree()).
-    private void preDecode(FacesContext context) {
-        setDataModel(null); // Re-evaluate even with server-side state saving
-        Map<String, SavedState> saved =
-              (Map<String, SavedState>) getStateHelper().get(PropertyKeys.saved);
-        if (null == saved || !keepSaved(context)) {
-            //noinspection CollectionWithoutInitialCapacity
-            getStateHelper().remove(PropertyKeys.saved);
-        }
-    }
-
-    // Perform pre-validation initialization work.  Note that this
-    // initialization may be performed either during a normal validation
-    // (ie. processValidators()) or during a tree visit (ie. visitTree()).
-    private void preValidate(FacesContext context) {
-        if (isNestedWithinIterator()) {
-            setDataModel(null);
-        }
-    }
-
-    // Perform pre-update initialization work.  Note that this
-    // initialization may be performed either during normal update
-    // (ie. processUpdates()) or during a tree visit (ie. visitTree()).
-    private void preUpdate(FacesContext context) {
-        if (isNestedWithinIterator()) {
-            setDataModel(null);
-        }
-    }
-
-    // Perform pre-encode initialization work.  Note that this
-    // initialization may be performed either during a normal encode
-    // (ie. encodeBegin()) or during a tree visit (ie. visitTree()).
-    private void preEncode(FacesContext context) {
-        setDataModel(null); // re-evaluate even with server-side state saving
-        if (!keepSaved(context)) {
-            ////noinspection CollectionWithoutInitialCapacity
-            //saved = new HashMap<String, SavedState>();
-            getStateHelper().remove(PropertyKeys.saved);
-        }
-    }
-
-    /**
-     * <p>Perform the appropriate phase-specific processing and per-row
-     * iteration for the specified phase, as follows:
-     * <ul>
-     * <li>Set the <code>rowIndex</code> property to -1, and process the facets
-     *     of this {@link UIData} component exactly once.</li>
-     * <li>Set the <code>rowIndex</code> property to -1, and process the facets
-     *     of the {@link UIColumn} children of this {@link UIData} component
-     *     exactly once.</li>
-     * <li>Iterate over the relevant rows, based on the <code>first</code>
-     *     and <code>row</code> properties, and process the children
-     *     of the {@link UIColumn} children of this {@link UIData} component
-     *     once per row.</li>
-     * </ul>
-     *
-     * @param context {@link FacesContext} for the current request
-     * @param phaseId {@link PhaseId} of the phase we are currently running
-     */
-    private void iterate(FacesContext context, PhaseId phaseId) {
-
-        // Process each facet of this component exactly once
-        setRowIndex(-1);
-        if (getFacetCount() > 0) {
-            for (UIComponent facet : getFacets().values()) {
-                if (phaseId == PhaseId.APPLY_REQUEST_VALUES) {
-                    facet.processDecodes(context);
-                } else if (phaseId == PhaseId.PROCESS_VALIDATIONS) {
-                    facet.processValidators(context);
-                } else if (phaseId == PhaseId.UPDATE_MODEL_VALUES) {
-                    facet.processUpdates(context);
-                } else {
-                    throw new IllegalArgumentException();
-                }
-            }
-        }
-
-        // collect rendered columns once
-        List<UIColumn> renderedColumns = new ArrayList<>(getChildCount());
-        if (getChildCount() > 0) {
-        	for (UIComponent child : getChildren()) {
-        		if (child instanceof UIColumn && child.isRendered()) {
-        			renderedColumns.add((UIColumn)child);
-        		}
-        	}
-        }
-
-        // Process each facet of our child UIColumn components exactly once
-        setRowIndex(-1);
-        for (UIColumn column : renderedColumns) {
-            if (column.getFacetCount() > 0) {
-                for (UIComponent columnFacet : column.getFacets().values()) {
-                    if (phaseId == PhaseId.APPLY_REQUEST_VALUES) {
-                        columnFacet.processDecodes(context);
-                    } else if (phaseId == PhaseId.PROCESS_VALIDATIONS) {
-                        columnFacet.processValidators(context);
-                    } else if (phaseId == PhaseId.UPDATE_MODEL_VALUES) {
-                        columnFacet.processUpdates(context);
-                    } else {
-                        throw new IllegalArgumentException();
-                    }
-                }
-            }
-        }
-
-        // Iterate over our UIColumn children, once per row
-        int processed = 0;
-        int rowIndex = getFirst() - 1;
-        int rows = getRows();
-
-        while (true) {
-
-            // Have we processed the requested number of rows?
-            if ((rows > 0) && (++processed > rows)) {
-                break;
-            }
-
-            // Expose the current row in the specified request attribute
-            setRowIndex(++rowIndex);
-            if (!isRowAvailable()) {
-                break; // Scrolled past the last row
-            }
-
-            // Perform phase-specific processing as required
-            // on the *children* of the UIColumn (facets have
-            // been done a single time with rowIndex=-1 already)
-            for (UIColumn kid : renderedColumns) {
-                if (kid.getChildCount() > 0) {
-                    for (UIComponent grandkid : kid.getChildren()) {
-                        if (!grandkid.isRendered()) {
-                            continue;
-                        }
-                        if (phaseId == PhaseId.APPLY_REQUEST_VALUES) {
-                            grandkid.processDecodes(context);
-                        } else if (phaseId == PhaseId.PROCESS_VALIDATIONS) {
-                            grandkid.processValidators(context);
-                        } else if (phaseId == PhaseId.UPDATE_MODEL_VALUES) {
-                            grandkid.processUpdates(context);
-                        } else {
-                            throw new IllegalArgumentException();
-                        }
-                    }
-                }
-            }
-
-        }
-
-        // Clean up after ourselves
-        setRowIndex(-1);
-
-    }
-
-    // Tests whether we need to visit our children as part of
-    // a tree visit
-    private boolean doVisitChildren(VisitContext context, boolean visitRows) {
-
-        // Just need to check whether there are any ids under this
-        // subtree.  Make sure row index is cleared out since
-        // getSubtreeIdsToVisit() needs our row-less client id.
-        if (visitRows) {
-            setRowIndex(-1);
-        }
-        Collection<String> idsToVisit = context.getSubtreeIdsToVisit(this);
-        assert(idsToVisit != null);
-
-        // All ids or non-empty collection means we need to visit our children.
-        return (!idsToVisit.isEmpty());
-    }
-
-//    // Performs pre-phase initialization before visiting children
-//    // (if necessary).
-//    private void preVisitChildren(VisitContext visitContext) {
-//
-//        // If EXECUTE_LIFECYCLE hint is set, we need to do
-//        // lifecycle-related initialization before visiting children
-//        if (visitContext.getHints().contains(VisitHint.EXECUTE_LIFECYCLE)) {
-//            FacesContext facesContext = visitContext.getFacesContext();
-//            PhaseId phaseId = facesContext.getCurrentPhaseId();
-//
-//            if (phaseId == PhaseId.APPLY_REQUEST_VALUES)
-//                preDecode(facesContext);
-//            else if (phaseId == PhaseId.PROCESS_VALIDATIONS)
-//                preValidate(facesContext);
-//            else if (phaseId == PhaseId.UPDATE_MODEL_VALUES)
-//                preUpdate(facesContext);
-//            else if (phaseId == PhaseId.RENDER_RESPONSE)
-//                preEncode(facesContext);
-//        }
-//    }
-
-    // Visit each facet of this component exactly once.
-    private boolean visitFacets(VisitContext context,
-                                VisitCallback callback,
-                                boolean visitRows) {
-
-        if (visitRows) {
-            setRowIndex(-1);
-        }
-        if (getFacetCount() > 0) {
-            for (UIComponent facet : getFacets().values()) {
-                if (facet.visitTree(context, callback))
-                    return true;
-            }
-        }
-
-        return false;
-    }
-
-    // Visit each UIColumn and any facets it may have defined exactly once
-    private boolean visitColumnsAndColumnFacets(VisitContext context,
-                                                VisitCallback callback,
-                                                boolean visitRows) {
-        if (visitRows) {
-            setRowIndex(-1);
-        }
-        if (getChildCount() > 0) {
-            for (UIComponent column : getChildren()) {
-                if (column instanceof UIColumn) {
-                    VisitResult result = context.invokeVisitCallback(column, callback); // visit the column directly
-                    if (result == VisitResult.COMPLETE) {
-                        return true;
-                    }
-                    if (column.getFacetCount() > 0) {
-                        for (UIComponent columnFacet : column.getFacets().values()) {
-                            if (columnFacet.visitTree(context, callback)) {
-                                return true;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        return false;
-    }
-
-    // Visit each column and row
-    private boolean visitRows(VisitContext context,
-                              VisitCallback callback,
-                              boolean visitRows) {
-
-        // Iterate over our UIColumn children, once per row
-        int processed = 0;
-        int rowIndex = 0;
-        int rows = 0;
-        if (visitRows) {
-            rowIndex = getFirst() - 1;
-            rows = getRows();
-        }
-
-        while (true) {
-
-            // Have we processed the requested number of rows?
-            if (visitRows) {
-                if ((rows > 0) && (++processed > rows)) {
-                    break;
-                }
-                // Expose the current row in the specified request attribute
-                setRowIndex(++rowIndex);
-                if (!isRowAvailable()) {
-                    break; // Scrolled past the last row
-                }
-            }
-
-            // Visit as required on the *children* of the UIColumn
-            // (facets have been done a single time with rowIndex=-1 already)
-            if (getChildCount() > 0) {
-                for (UIComponent kid : getChildren()) {
-                    if (!(kid instanceof UIColumn)) {
-                        continue;
-                    }
-                    if (kid.getChildCount() > 0) {
-                    for (UIComponent grandkid : kid.getChildren()) {
-                            if (grandkid.visitTree(context, callback)) {
-                                return true;
-                            }
-                        }
-                    }
-                }
-            }
-
-            if (!visitRows) {
-                break;
-            }
-
-        }
-
-        return false;
-    }
-
-
-    /**
-     * <p>Return <code>true</code> if we need to keep the saved
-     * per-child state information.  This will be the case if any of the
-     * following are true:</p>
-     *
-     * <ul>
-     *
-     * <li>there are messages queued with severity ERROR or FATAL.</li>
-     *
-     * <li>this <code>UIData</code> instance is nested inside of another
-     * <code>UIData</code> instance</li>
-     *
-     * </ul>
-     *
-     * @param context {@link FacesContext} for the current request
-     */
-    private boolean keepSaved(FacesContext context) {
-
-        return (contextHasErrorMessages(context) || isNestedWithinIterator());
-
-    }
-
-
-    private Boolean isNestedWithinIterator() {
-        if (isNested == null) {
-            UIComponent parent = this;
-            while (null != (parent = parent.getParent())) {
-                if (parent instanceof UIData || parent.getClass().getName().endsWith("UIRepeat")) {
-                    isNested = Boolean.TRUE;
-                    break;
-                }
-            }
-            if (isNested == null) {
-                isNested = Boolean.FALSE;
-            }
-            return isNested;
-        } else {
-            return isNested;
-        }
-    }
-
-
-    private boolean contextHasErrorMessages(FacesContext context) {
-
-        FacesMessage.Severity sev = context.getMaximumSeverity();
-        return (sev != null && (FacesMessage.SEVERITY_ERROR.compareTo(sev) >= 0));
-
-    }
-
-
-    /**
-     * <p>Restore state information for all descendant components, as described
-     * for <code>setRowIndex()</code>.</p>
-     */
-    private void restoreDescendantState() {
-
-        FacesContext context = getFacesContext();
-        if (getChildCount() > 0) {
-            for (UIComponent kid : getChildren()) {
-                if (kid instanceof UIColumn) {
-                    restoreDescendantState(kid, context);
-                }
-            }
-        }
-
-    }
-
-
-    /**
-     * <p>Restore state information for the specified component and its
-     * descendants.</p>
-     *
-     * @param component Component for which to restore state information
-     * @param context   {@link FacesContext} for the current request
-     */
-    private void restoreDescendantState(UIComponent component,
-                                        FacesContext context) {
-
-        // Reset the client identifier for this component
-        String id = component.getId();
-        component.setId(id); // Forces client id to be reset
-        Map<String, SavedState> saved = (Map<String,SavedState>)
-            getStateHelper().get(PropertyKeys.saved);
-        // Restore state for this component (if it is a EditableValueHolder)
-        if (component instanceof EditableValueHolder) {
-            EditableValueHolder input = (EditableValueHolder) component;
-            String clientId = component.getClientId(context);
-
-            SavedState state = (saved == null ? null : saved.get(clientId));
-            if (state == null) {
-                input.resetValue();
-            } else {
-                input.setValue(state.getValue());
-                input.setValid(state.isValid());
-                input.setSubmittedValue(state.getSubmittedValue());
-                // This *must* be set after the call to setValue(), since
-                // calling setValue() always resets "localValueSet" to true.
-                input.setLocalValueSet(state.isLocalValueSet());
-            }
-        } else if (component instanceof UIForm) {
-            UIForm form = (UIForm) component;
-            String clientId = component.getClientId(context);
-            SavedState state = (saved == null ? null : saved.get(clientId));
-            if (state == null) {
-                // submitted is transient state
-                form.setSubmitted(false);
-            } else {
-                form.setSubmitted(state.getSubmitted());
-            }
-        }
-
-        // Restore state for children of this component
-        if (component.getChildCount() > 0) {
-            for (UIComponent kid : component.getChildren()) {
-                restoreDescendantState(kid, context);
-            }
-        }
-
-        // Restore state for facets of this component
-        if (component.getFacetCount() > 0) {
-            for (UIComponent facet : component.getFacets().values()) {
-                restoreDescendantState(facet, context);
-            }
-        }
-
-    }
-
-
-    /**
-     * <p>Save state information for all descendant components, as described for
-     * <code>setRowIndex()</code>.</p>
-     */
-    private void saveDescendantState() {
-
-        FacesContext context = getFacesContext();
-        if (getChildCount() > 0) {
-            for (UIComponent kid : getChildren()) {
-                if (kid instanceof UIColumn) {
-                    saveDescendantState(kid, context);
-                }
-            }
-        }
-
-    }
-
-
-    /**
-     * <p>Save state information for the specified component and its
-     * descendants.</p>
-     *
-     * @param component Component for which to save state information
-     * @param context   {@link FacesContext} for the current request
-     */
-    private void saveDescendantState(UIComponent component,
-                                     FacesContext context) {
-
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
 }

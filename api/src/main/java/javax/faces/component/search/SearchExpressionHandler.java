@@ -190,7 +190,7 @@ public abstract class SearchExpressionHandler {
      */
     public void invokeOnComponent(SearchExpressionContext searchExpressionContext,
             String expression, ContextCallback callback) {
-        invokeOnComponent(searchExpressionContext, searchExpressionContext.getSource(), expression, callback);
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -272,6 +272,6 @@ public abstract class SearchExpressionHandler {
      * @since 2.3
      */
     public char[] getExpressionSeperatorChars(FacesContext context) {
-        return EXPRESSION_SEPARATOR_CHARS;
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 }

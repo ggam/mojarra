@@ -33,14 +33,12 @@ import javax.faces.context.FacesContext;
  */
 public abstract class VisitContextFactory implements FacesWrapper<VisitContextFactory> {
 
-    private VisitContextFactory wrapped;
-
     /**
      * @deprecated Use the other constructor taking the implementation being wrapped.
      */
     @Deprecated
     public VisitContextFactory() {
-
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -51,7 +49,7 @@ public abstract class VisitContextFactory implements FacesWrapper<VisitContextFa
      * @param wrapped The implementation being wrapped.
      */
     public VisitContextFactory(VisitContextFactory wrapped) {
-        this.wrapped = wrapped;
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -61,7 +59,7 @@ public abstract class VisitContextFactory implements FacesWrapper<VisitContextFa
      */
     @Override
     public VisitContextFactory getWrapped() {
-        return wrapped;
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
 

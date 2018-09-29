@@ -38,14 +38,12 @@ import javax.faces.context.FacesContext;
  */
 public abstract class VisitContextWrapper extends VisitContext implements FacesWrapper<VisitContext>{
 
-    private VisitContext wrapped;
-
     /**
      * @deprecated Use the other constructor taking the implementation being wrapped.
      */
     @Deprecated
     public VisitContextWrapper() {
-
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -57,37 +55,37 @@ public abstract class VisitContextWrapper extends VisitContext implements FacesW
      * @since 2.3
      */
     public VisitContextWrapper(VisitContext wrapped) {
-        this.wrapped = wrapped;
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     @Override
     public VisitContext getWrapped() {
-        return wrapped;
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     @Override
     public FacesContext getFacesContext() {
-        return getWrapped().getFacesContext();
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     @Override
     public Set<VisitHint> getHints() {
-        return getWrapped().getHints();
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     @Override
     public Collection<String> getIdsToVisit() {
-        return getWrapped().getIdsToVisit();
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     @Override
     public Collection<String> getSubtreeIdsToVisit(UIComponent component) {
-        return getWrapped().getSubtreeIdsToVisit(component);
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     @Override
     public VisitResult invokeVisitCallback(UIComponent component, VisitCallback callback) {
-        return getWrapped().invokeVisitCallback(component, callback);
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
 }

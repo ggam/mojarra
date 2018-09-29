@@ -21,7 +21,6 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.Set;
 
-import javax.faces.FactoryFinder;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 
@@ -44,19 +43,6 @@ import javax.faces.context.FacesContext;
  */
 abstract public class VisitContext {
 
-    // Design notes: The VisitContext contract could be defined
-    // as an interface.  However, there is the potential that we
-    // may need to add new methods in the future, so leaving as 
-    // an abstract class in order to have room to grow.
-    // 
-    // Since we are an abstract class rather than an interface,
-    // we could provide implementations of of some of the simpler
-    // methods (eg. getFacesContext() and getHints()) to avoid 
-    // duplicating this code in VisitContext implementations.
-    // However, doing so would mean that "wrapping" VisitContext
-    // implementations would be forced to pick up such implementations,
-    // so going with a pure contract (no implementation).
-
     /**
      * <p class="changed_added_2_0">This unmodifiable Collection is
      * returned by <code>getIdsToVisit()</code> and
@@ -70,22 +56,17 @@ abstract public class VisitContext {
      *
      * @since 2.0
      */
-    // Note: We cannot use Collections.emptyList() as that returns
-    // a shared instance - we want to unique instance to allow for
-    // identity tests.
     static public final Collection<String> ALL_IDS = 
         new AbstractCollection<String>() {
 
             @Override
             public Iterator<String> iterator() {
-                throw new UnsupportedOperationException(
-                    "VisitContext.ALL_IDS does not support this operation");
+                throw new UnsupportedOperationException("This is API for compile only purposes.");
             }
 
             @Override
             public int size() {
-                throw new UnsupportedOperationException(
-                    "VisitContext.ALL_IDS does not support this operation");
+                throw new UnsupportedOperationException("This is API for compile only purposes.");
             }
 
             @Override
@@ -197,11 +178,7 @@ abstract public class VisitContext {
     public static VisitContext createVisitContext(FacesContext context,
                                                   Collection<String> ids,
                                                   Set<VisitHint> hints) {
-
-        VisitContextFactory factory = (VisitContextFactory)
-                FactoryFinder.getFactory(FactoryFinder.VISIT_CONTEXT_FACTORY);
-        return factory.getVisitContext(context, ids, hints);
-
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -214,9 +191,7 @@ abstract public class VisitContext {
      * @return a VisitContext instance
      */
     public static VisitContext createVisitContext(FacesContext context) {
-
-        return createVisitContext(context, null, null);
-        
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
     
 }

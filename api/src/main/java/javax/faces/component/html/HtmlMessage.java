@@ -25,17 +25,17 @@ import javax.faces.component.UIMessage;
 /**
  * 
  * <p>By default, the <code>rendererType</code> property must be set to "<code>javax.faces.Message</code>".
-REPLACE_WITH_EXCEPTION;
+ * This value can be changed by calling the <code>setRendererType()</code> method.</p>
  */
 public class HtmlMessage extends UIMessage {
 
 
 
-
+    private static final String OPTIMIZED_PACKAGE = "javax.faces.component.";
 
     public HtmlMessage() {
-
-REPLACE_WITH_EXCEPTION;
+        super();
+        setRendererType("javax.faces.Message");
     }
 
 
@@ -79,7 +79,7 @@ REPLACE_WITH_EXCEPTION;
      * care must be taken to have the correct case.
      */
     public java.lang.String getDir() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.dir);
 
     }
 
@@ -88,8 +88,8 @@ REPLACE_WITH_EXCEPTION;
      * @param dir the new property value
      */
     public void setDir(java.lang.String dir) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.dir, dir);
+        handleAttribute("dir", dir);
     }
 
 
@@ -100,7 +100,7 @@ REPLACE_WITH_EXCEPTION;
      * with a severity class of "ERROR".
      */
     public java.lang.String getErrorClass() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.errorClass);
 
     }
 
@@ -109,7 +109,7 @@ REPLACE_WITH_EXCEPTION;
      * @param errorClass the new property value
      */
     public void setErrorClass(java.lang.String errorClass) {
-REPLACE_WITH_EXCEPTION;
+        getStateHelper().put(PropertyKeys.errorClass, errorClass);
     }
 
 
@@ -120,7 +120,7 @@ REPLACE_WITH_EXCEPTION;
      * with a severity class of "ERROR".
      */
     public java.lang.String getErrorStyle() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.errorStyle);
 
     }
 
@@ -129,7 +129,7 @@ REPLACE_WITH_EXCEPTION;
      * @param errorStyle the new property value
      */
     public void setErrorStyle(java.lang.String errorStyle) {
-REPLACE_WITH_EXCEPTION;
+        getStateHelper().put(PropertyKeys.errorStyle, errorStyle);
     }
 
 
@@ -140,7 +140,7 @@ REPLACE_WITH_EXCEPTION;
      * with a severity class of "FATAL".
      */
     public java.lang.String getFatalClass() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.fatalClass);
 
     }
 
@@ -149,7 +149,7 @@ REPLACE_WITH_EXCEPTION;
      * @param fatalClass the new property value
      */
     public void setFatalClass(java.lang.String fatalClass) {
-REPLACE_WITH_EXCEPTION;
+        getStateHelper().put(PropertyKeys.fatalClass, fatalClass);
     }
 
 
@@ -160,7 +160,7 @@ REPLACE_WITH_EXCEPTION;
      * with a severity class of "FATAL".
      */
     public java.lang.String getFatalStyle() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.fatalStyle);
 
     }
 
@@ -169,7 +169,7 @@ REPLACE_WITH_EXCEPTION;
      * @param fatalStyle the new property value
      */
     public void setFatalStyle(java.lang.String fatalStyle) {
-REPLACE_WITH_EXCEPTION;
+        getStateHelper().put(PropertyKeys.fatalStyle, fatalStyle);
     }
 
 
@@ -180,7 +180,7 @@ REPLACE_WITH_EXCEPTION;
      * with a severity class of "INFO".
      */
     public java.lang.String getInfoClass() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.infoClass);
 
     }
 
@@ -189,7 +189,7 @@ REPLACE_WITH_EXCEPTION;
      * @param infoClass the new property value
      */
     public void setInfoClass(java.lang.String infoClass) {
-REPLACE_WITH_EXCEPTION;
+        getStateHelper().put(PropertyKeys.infoClass, infoClass);
     }
 
 
@@ -200,7 +200,7 @@ REPLACE_WITH_EXCEPTION;
      * with a severity class of "INFO".
      */
     public java.lang.String getInfoStyle() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.infoStyle);
 
     }
 
@@ -209,7 +209,7 @@ REPLACE_WITH_EXCEPTION;
      * @param infoStyle the new property value
      */
     public void setInfoStyle(java.lang.String infoStyle) {
-REPLACE_WITH_EXCEPTION;
+        getStateHelper().put(PropertyKeys.infoStyle, infoStyle);
     }
 
 
@@ -220,7 +220,7 @@ REPLACE_WITH_EXCEPTION;
      * for this component.
      */
     public java.lang.String getLang() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.lang);
 
     }
 
@@ -229,8 +229,8 @@ REPLACE_WITH_EXCEPTION;
      * @param lang the new property value
      */
     public void setLang(java.lang.String lang) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.lang, lang);
+        handleAttribute("lang", lang);
     }
 
 
@@ -253,7 +253,7 @@ REPLACE_WITH_EXCEPTION;
      * correctly interpreting the value of this attribute.</p>
      */
     public java.lang.String getRole() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.role);
 
     }
 
@@ -262,8 +262,8 @@ REPLACE_WITH_EXCEPTION;
      * @param role the new property value
      */
     public void setRole(java.lang.String role) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.role, role);
+        handleAttribute("role", role);
     }
 
 
@@ -273,7 +273,7 @@ REPLACE_WITH_EXCEPTION;
      * <p>Contents: CSS style(s) to be applied when this component is rendered.
      */
     public java.lang.String getStyle() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.style);
 
     }
 
@@ -282,8 +282,8 @@ REPLACE_WITH_EXCEPTION;
      * @param style the new property value
      */
     public void setStyle(java.lang.String style) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.style, style);
+        handleAttribute("style", style);
     }
 
 
@@ -295,7 +295,7 @@ REPLACE_WITH_EXCEPTION;
      * as the "class" attribute on generated markup.
      */
     public java.lang.String getStyleClass() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.styleClass);
 
     }
 
@@ -304,7 +304,7 @@ REPLACE_WITH_EXCEPTION;
      * @param styleClass the new property value
      */
     public void setStyleClass(java.lang.String styleClass) {
-REPLACE_WITH_EXCEPTION;
+        getStateHelper().put(PropertyKeys.styleClass, styleClass);
     }
 
 
@@ -315,7 +315,7 @@ REPLACE_WITH_EXCEPTION;
      * for this component.
      */
     public java.lang.String getTitle() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.title);
 
     }
 
@@ -324,8 +324,8 @@ REPLACE_WITH_EXCEPTION;
      * @param title the new property value
      */
     public void setTitle(java.lang.String title) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.title, title);
+        handleAttribute("title", title);
     }
 
 
@@ -336,7 +336,7 @@ REPLACE_WITH_EXCEPTION;
      * message should be displayed as a tooltip.
      */
     public boolean isTooltip() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.Boolean) getStateHelper().eval(PropertyKeys.tooltip, false);
 
     }
 
@@ -345,7 +345,7 @@ REPLACE_WITH_EXCEPTION;
      * @param tooltip the new property value
      */
     public void setTooltip(boolean tooltip) {
-REPLACE_WITH_EXCEPTION;
+        getStateHelper().put(PropertyKeys.tooltip, tooltip);
     }
 
 
@@ -356,7 +356,7 @@ REPLACE_WITH_EXCEPTION;
      * with a severity class of "WARN".
      */
     public java.lang.String getWarnClass() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.warnClass);
 
     }
 
@@ -365,7 +365,7 @@ REPLACE_WITH_EXCEPTION;
      * @param warnClass the new property value
      */
     public void setWarnClass(java.lang.String warnClass) {
-REPLACE_WITH_EXCEPTION;
+        getStateHelper().put(PropertyKeys.warnClass, warnClass);
     }
 
 
@@ -376,7 +376,7 @@ REPLACE_WITH_EXCEPTION;
      * with a severity class of "WARN".
      */
     public java.lang.String getWarnStyle() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.warnStyle);
 
     }
 
@@ -385,15 +385,15 @@ REPLACE_WITH_EXCEPTION;
      * @param warnStyle the new property value
      */
     public void setWarnStyle(java.lang.String warnStyle) {
-REPLACE_WITH_EXCEPTION;
+        getStateHelper().put(PropertyKeys.warnStyle, warnStyle);
     }
 
 
-
+    private void handleAttribute(String name, Object value) {
         List<String> setAttributes = (List<String>) this.getAttributes().get("javax.faces.component.UIComponentBase.attributesThatAreSet");
         if (setAttributes == null) {
             String cname = this.getClass().getName();
-
+            if (cname != null && cname.startsWith(OPTIMIZED_PACKAGE)) {
                 setAttributes = new ArrayList<String>(6);
                 this.getAttributes().put("javax.faces.component.UIComponentBase.attributesThatAreSet", setAttributes);
             }

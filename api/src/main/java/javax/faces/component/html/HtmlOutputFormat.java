@@ -31,17 +31,17 @@ import javax.faces.component.UIOutput;
  * present, render a <code>span</code> element and pass them through
  * as attributes on the span.</p>
  * <p>By default, the <code>rendererType</code> property must be set to "<code>javax.faces.Format</code>".
-REPLACE_WITH_EXCEPTION;
+ * This value can be changed by calling the <code>setRendererType()</code> method.</p>
  */
 public class HtmlOutputFormat extends UIOutput {
 
 
 
-
+    private static final String OPTIMIZED_PACKAGE = "javax.faces.component.";
 
     public HtmlOutputFormat() {
-
-REPLACE_WITH_EXCEPTION;
+        super();
+        setRendererType("javax.faces.Format");
     }
 
 
@@ -77,7 +77,7 @@ REPLACE_WITH_EXCEPTION;
      * care must be taken to have the correct case.
      */
     public java.lang.String getDir() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.dir);
 
     }
 
@@ -86,8 +86,8 @@ REPLACE_WITH_EXCEPTION;
      * @param dir the new property value
      */
     public void setDir(java.lang.String dir) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.dir, dir);
+        handleAttribute("dir", dir);
     }
 
 
@@ -99,7 +99,7 @@ REPLACE_WITH_EXCEPTION;
      * is set to "true" by default.
      */
     public boolean isEscape() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.Boolean) getStateHelper().eval(PropertyKeys.escape, true);
 
     }
 
@@ -108,7 +108,7 @@ REPLACE_WITH_EXCEPTION;
      * @param escape the new property value
      */
     public void setEscape(boolean escape) {
-REPLACE_WITH_EXCEPTION;
+        getStateHelper().put(PropertyKeys.escape, escape);
     }
 
 
@@ -119,7 +119,7 @@ REPLACE_WITH_EXCEPTION;
      * for this component.
      */
     public java.lang.String getLang() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.lang);
 
     }
 
@@ -128,8 +128,8 @@ REPLACE_WITH_EXCEPTION;
      * @param lang the new property value
      */
     public void setLang(java.lang.String lang) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.lang, lang);
+        handleAttribute("lang", lang);
     }
 
 
@@ -152,7 +152,7 @@ REPLACE_WITH_EXCEPTION;
      * correctly interpreting the value of this attribute.</p>
      */
     public java.lang.String getRole() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.role);
 
     }
 
@@ -161,8 +161,8 @@ REPLACE_WITH_EXCEPTION;
      * @param role the new property value
      */
     public void setRole(java.lang.String role) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.role, role);
+        handleAttribute("role", role);
     }
 
 
@@ -172,7 +172,7 @@ REPLACE_WITH_EXCEPTION;
      * <p>Contents: CSS style(s) to be applied when this component is rendered.
      */
     public java.lang.String getStyle() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.style);
 
     }
 
@@ -181,8 +181,8 @@ REPLACE_WITH_EXCEPTION;
      * @param style the new property value
      */
     public void setStyle(java.lang.String style) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.style, style);
+        handleAttribute("style", style);
     }
 
 
@@ -194,7 +194,7 @@ REPLACE_WITH_EXCEPTION;
      * as the "class" attribute on generated markup.
      */
     public java.lang.String getStyleClass() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.styleClass);
 
     }
 
@@ -203,7 +203,7 @@ REPLACE_WITH_EXCEPTION;
      * @param styleClass the new property value
      */
     public void setStyleClass(java.lang.String styleClass) {
-REPLACE_WITH_EXCEPTION;
+        getStateHelper().put(PropertyKeys.styleClass, styleClass);
     }
 
 
@@ -214,7 +214,7 @@ REPLACE_WITH_EXCEPTION;
      * for this component.
      */
     public java.lang.String getTitle() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.title);
 
     }
 
@@ -223,16 +223,16 @@ REPLACE_WITH_EXCEPTION;
      * @param title the new property value
      */
     public void setTitle(java.lang.String title) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.title, title);
+        handleAttribute("title", title);
     }
 
 
-
+    private void handleAttribute(String name, Object value) {
         List<String> setAttributes = (List<String>) this.getAttributes().get("javax.faces.component.UIComponentBase.attributesThatAreSet");
         if (setAttributes == null) {
             String cname = this.getClass().getName();
-
+            if (cname != null && cname.startsWith(OPTIMIZED_PACKAGE)) {
                 setAttributes = new ArrayList<String>(6);
                 this.getAttributes().put("javax.faces.component.UIComponentBase.attributesThatAreSet", setAttributes);
             }

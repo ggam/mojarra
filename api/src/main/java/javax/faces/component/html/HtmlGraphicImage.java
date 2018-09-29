@@ -30,17 +30,17 @@ import javax.faces.component.UIGraphic;
  * <p>Represents an HTML <code>img</code> element, used to retrieve
  * and render a graphical image.</p>
  * <p>By default, the <code>rendererType</code> property must be set to "<code>javax.faces.Image</code>".
-REPLACE_WITH_EXCEPTION;
+ * This value can be changed by calling the <code>setRendererType()</code> method.</p>
  */
 public class HtmlGraphicImage extends UIGraphic implements ClientBehaviorHolder {
 
 
 
-
+    private static final String OPTIMIZED_PACKAGE = "javax.faces.component.";
 
     public HtmlGraphicImage() {
-
-REPLACE_WITH_EXCEPTION;
+        super();
+        setRendererType("javax.faces.Image");
     }
 
 
@@ -89,7 +89,7 @@ REPLACE_WITH_EXCEPTION;
      * element rendered by this component.
      */
     public java.lang.String getAlt() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.alt);
 
     }
 
@@ -98,8 +98,8 @@ REPLACE_WITH_EXCEPTION;
      * @param alt the new property value
      */
     public void setAlt(java.lang.String alt) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.alt, alt);
+        handleAttribute("alt", alt);
     }
 
 
@@ -112,7 +112,7 @@ REPLACE_WITH_EXCEPTION;
      * care must be taken to have the correct case.
      */
     public java.lang.String getDir() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.dir);
 
     }
 
@@ -121,8 +121,8 @@ REPLACE_WITH_EXCEPTION;
      * @param dir the new property value
      */
     public void setDir(java.lang.String dir) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.dir, dir);
+        handleAttribute("dir", dir);
     }
 
 
@@ -132,7 +132,7 @@ REPLACE_WITH_EXCEPTION;
      * <p>Contents: Override for the height of this image.
      */
     public java.lang.String getHeight() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.height);
 
     }
 
@@ -141,8 +141,8 @@ REPLACE_WITH_EXCEPTION;
      * @param height the new property value
      */
     public void setHeight(java.lang.String height) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.height, height);
+        handleAttribute("height", height);
     }
 
 
@@ -156,7 +156,7 @@ REPLACE_WITH_EXCEPTION;
      * ismap="ismap".
      */
     public boolean isIsmap() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.Boolean) getStateHelper().eval(PropertyKeys.ismap, false);
 
     }
 
@@ -165,7 +165,7 @@ REPLACE_WITH_EXCEPTION;
      * @param ismap the new property value
      */
     public void setIsmap(boolean ismap) {
-REPLACE_WITH_EXCEPTION;
+        getStateHelper().put(PropertyKeys.ismap, ismap);
     }
 
 
@@ -176,7 +176,7 @@ REPLACE_WITH_EXCEPTION;
      * for this component.
      */
     public java.lang.String getLang() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.lang);
 
     }
 
@@ -185,8 +185,8 @@ REPLACE_WITH_EXCEPTION;
      * @param lang the new property value
      */
     public void setLang(java.lang.String lang) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.lang, lang);
+        handleAttribute("lang", lang);
     }
 
 
@@ -197,7 +197,7 @@ REPLACE_WITH_EXCEPTION;
      * represented by this element.
      */
     public java.lang.String getLongdesc() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.longdesc);
 
     }
 
@@ -206,8 +206,8 @@ REPLACE_WITH_EXCEPTION;
      * @param longdesc the new property value
      */
     public void setLongdesc(java.lang.String longdesc) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.longdesc, longdesc);
+        handleAttribute("longdesc", longdesc);
     }
 
 
@@ -218,7 +218,7 @@ REPLACE_WITH_EXCEPTION;
      * clicked over this element.
      */
     public java.lang.String getOnclick() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.onclick);
 
     }
 
@@ -227,8 +227,8 @@ REPLACE_WITH_EXCEPTION;
      * @param onclick the new property value
      */
     public void setOnclick(java.lang.String onclick) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.onclick, onclick);
+        handleAttribute("onclick", onclick);
     }
 
 
@@ -239,7 +239,7 @@ REPLACE_WITH_EXCEPTION;
      * double clicked over this element.
      */
     public java.lang.String getOndblclick() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.ondblclick);
 
     }
 
@@ -248,8 +248,8 @@ REPLACE_WITH_EXCEPTION;
      * @param ondblclick the new property value
      */
     public void setOndblclick(java.lang.String ondblclick) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.ondblclick, ondblclick);
+        handleAttribute("ondblclick", ondblclick);
     }
 
 
@@ -260,7 +260,7 @@ REPLACE_WITH_EXCEPTION;
      * pressed down over this element.
      */
     public java.lang.String getOnkeydown() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.onkeydown);
 
     }
 
@@ -269,8 +269,8 @@ REPLACE_WITH_EXCEPTION;
      * @param onkeydown the new property value
      */
     public void setOnkeydown(java.lang.String onkeydown) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.onkeydown, onkeydown);
+        handleAttribute("onkeydown", onkeydown);
     }
 
 
@@ -281,7 +281,7 @@ REPLACE_WITH_EXCEPTION;
      * pressed and released over this element.
      */
     public java.lang.String getOnkeypress() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.onkeypress);
 
     }
 
@@ -290,8 +290,8 @@ REPLACE_WITH_EXCEPTION;
      * @param onkeypress the new property value
      */
     public void setOnkeypress(java.lang.String onkeypress) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.onkeypress, onkeypress);
+        handleAttribute("onkeypress", onkeypress);
     }
 
 
@@ -302,7 +302,7 @@ REPLACE_WITH_EXCEPTION;
      * released over this element.
      */
     public java.lang.String getOnkeyup() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.onkeyup);
 
     }
 
@@ -311,8 +311,8 @@ REPLACE_WITH_EXCEPTION;
      * @param onkeyup the new property value
      */
     public void setOnkeyup(java.lang.String onkeyup) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.onkeyup, onkeyup);
+        handleAttribute("onkeyup", onkeyup);
     }
 
 
@@ -323,7 +323,7 @@ REPLACE_WITH_EXCEPTION;
      * pressed down over this element.
      */
     public java.lang.String getOnmousedown() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.onmousedown);
 
     }
 
@@ -332,8 +332,8 @@ REPLACE_WITH_EXCEPTION;
      * @param onmousedown the new property value
      */
     public void setOnmousedown(java.lang.String onmousedown) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.onmousedown, onmousedown);
+        handleAttribute("onmousedown", onmousedown);
     }
 
 
@@ -344,7 +344,7 @@ REPLACE_WITH_EXCEPTION;
      * moved within this element.
      */
     public java.lang.String getOnmousemove() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.onmousemove);
 
     }
 
@@ -353,8 +353,8 @@ REPLACE_WITH_EXCEPTION;
      * @param onmousemove the new property value
      */
     public void setOnmousemove(java.lang.String onmousemove) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.onmousemove, onmousemove);
+        handleAttribute("onmousemove", onmousemove);
     }
 
 
@@ -365,7 +365,7 @@ REPLACE_WITH_EXCEPTION;
      * moved away from this element.
      */
     public java.lang.String getOnmouseout() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.onmouseout);
 
     }
 
@@ -374,8 +374,8 @@ REPLACE_WITH_EXCEPTION;
      * @param onmouseout the new property value
      */
     public void setOnmouseout(java.lang.String onmouseout) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.onmouseout, onmouseout);
+        handleAttribute("onmouseout", onmouseout);
     }
 
 
@@ -386,7 +386,7 @@ REPLACE_WITH_EXCEPTION;
      * moved onto this element.
      */
     public java.lang.String getOnmouseover() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.onmouseover);
 
     }
 
@@ -395,8 +395,8 @@ REPLACE_WITH_EXCEPTION;
      * @param onmouseover the new property value
      */
     public void setOnmouseover(java.lang.String onmouseover) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.onmouseover, onmouseover);
+        handleAttribute("onmouseover", onmouseover);
     }
 
 
@@ -407,7 +407,7 @@ REPLACE_WITH_EXCEPTION;
      * released over this element.
      */
     public java.lang.String getOnmouseup() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.onmouseup);
 
     }
 
@@ -416,8 +416,8 @@ REPLACE_WITH_EXCEPTION;
      * @param onmouseup the new property value
      */
     public void setOnmouseup(java.lang.String onmouseup) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.onmouseup, onmouseup);
+        handleAttribute("onmouseup", onmouseup);
     }
 
 
@@ -440,7 +440,7 @@ REPLACE_WITH_EXCEPTION;
      * correctly interpreting the value of this attribute.</p>
      */
     public java.lang.String getRole() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.role);
 
     }
 
@@ -449,8 +449,8 @@ REPLACE_WITH_EXCEPTION;
      * @param role the new property value
      */
     public void setRole(java.lang.String role) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.role, role);
+        handleAttribute("role", role);
     }
 
 
@@ -460,7 +460,7 @@ REPLACE_WITH_EXCEPTION;
      * <p>Contents: CSS style(s) to be applied when this component is rendered.
      */
     public java.lang.String getStyle() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.style);
 
     }
 
@@ -469,8 +469,8 @@ REPLACE_WITH_EXCEPTION;
      * @param style the new property value
      */
     public void setStyle(java.lang.String style) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.style, style);
+        handleAttribute("style", style);
     }
 
 
@@ -482,7 +482,7 @@ REPLACE_WITH_EXCEPTION;
      * as the "class" attribute on generated markup.
      */
     public java.lang.String getStyleClass() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.styleClass);
 
     }
 
@@ -491,7 +491,7 @@ REPLACE_WITH_EXCEPTION;
      * @param styleClass the new property value
      */
     public void setStyleClass(java.lang.String styleClass) {
-REPLACE_WITH_EXCEPTION;
+        getStateHelper().put(PropertyKeys.styleClass, styleClass);
     }
 
 
@@ -502,7 +502,7 @@ REPLACE_WITH_EXCEPTION;
      * for this component.
      */
     public java.lang.String getTitle() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.title);
 
     }
 
@@ -511,8 +511,8 @@ REPLACE_WITH_EXCEPTION;
      * @param title the new property value
      */
     public void setTitle(java.lang.String title) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.title, title);
+        handleAttribute("title", title);
     }
 
 
@@ -523,7 +523,7 @@ REPLACE_WITH_EXCEPTION;
      * element) for which this element provides the image.
      */
     public java.lang.String getUsemap() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.usemap);
 
     }
 
@@ -532,8 +532,8 @@ REPLACE_WITH_EXCEPTION;
      * @param usemap the new property value
      */
     public void setUsemap(java.lang.String usemap) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.usemap, usemap);
+        handleAttribute("usemap", usemap);
     }
 
 
@@ -543,7 +543,7 @@ REPLACE_WITH_EXCEPTION;
      * <p>Contents: Override for the width of this image.
      */
     public java.lang.String getWidth() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.width);
 
     }
 
@@ -552,8 +552,8 @@ REPLACE_WITH_EXCEPTION;
      * @param width the new property value
      */
     public void setWidth(java.lang.String width) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.width, width);
+        handleAttribute("width", width);
     }
 
 
@@ -567,11 +567,11 @@ REPLACE_WITH_EXCEPTION;
         return null;    }
 
 
-
+    private void handleAttribute(String name, Object value) {
         List<String> setAttributes = (List<String>) this.getAttributes().get("javax.faces.component.UIComponentBase.attributesThatAreSet");
         if (setAttributes == null) {
             String cname = this.getClass().getName();
-
+            if (cname != null && cname.startsWith(OPTIMIZED_PACKAGE)) {
                 setAttributes = new ArrayList<String>(6);
                 this.getAttributes().put("javax.faces.component.UIComponentBase.attributesThatAreSet", setAttributes);
             }

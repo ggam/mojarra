@@ -27,17 +27,17 @@ import javax.faces.component.UICommand;
  * like an ajax form submit.  This component must be placed inside
  * a form, and requires JavaScript to be enabled in the client.</p>
  * <p>By default, the <code>rendererType</code> property must be set to "<code>javax.faces.Script</code>".
-REPLACE_WITH_EXCEPTION;
+ * This value can be changed by calling the <code>setRendererType()</code> method.</p>
  */
 public class HtmlCommandScript extends UICommand {
 
 
 
-
+    private static final String OPTIMIZED_PACKAGE = "javax.faces.component.";
 
     public HtmlCommandScript() {
-
-REPLACE_WITH_EXCEPTION;
+        super();
+        setRendererType("javax.faces.Script");
     }
 
 
@@ -71,7 +71,7 @@ REPLACE_WITH_EXCEPTION;
      * Defaults to <code>false</code>.
      */
     public boolean isAutorun() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.Boolean) getStateHelper().eval(PropertyKeys.autorun, false);
 
     }
 
@@ -80,7 +80,7 @@ REPLACE_WITH_EXCEPTION;
      * @param autorun the new property value
      */
     public void setAutorun(boolean autorun) {
-REPLACE_WITH_EXCEPTION;
+        getStateHelper().put(PropertyKeys.autorun, autorun);
     }
 
 
@@ -95,7 +95,7 @@ REPLACE_WITH_EXCEPTION;
      * For example, <code>@this clientIdOne clientIdTwo</code>.
      */
     public java.lang.String getExecute() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.execute);
 
     }
 
@@ -104,7 +104,7 @@ REPLACE_WITH_EXCEPTION;
      * @param execute the new property value
      */
     public void setExecute(java.lang.String execute) {
-REPLACE_WITH_EXCEPTION;
+        getStateHelper().put(PropertyKeys.execute, execute);
     }
 
 
@@ -115,7 +115,7 @@ REPLACE_WITH_EXCEPTION;
      * This can be a namespaced function name, e.g. <code>name="ez.functionName"</code>.
      */
     public java.lang.String getName() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.name);
 
     }
 
@@ -124,7 +124,7 @@ REPLACE_WITH_EXCEPTION;
      * @param name the new property value
      */
     public void setName(java.lang.String name) {
-REPLACE_WITH_EXCEPTION;
+        getStateHelper().put(PropertyKeys.name, name);
     }
 
 
@@ -134,7 +134,7 @@ REPLACE_WITH_EXCEPTION;
      * <p>Contents: The name of the JavaScript function that will handle errors.
      */
     public java.lang.String getOnerror() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.onerror);
 
     }
 
@@ -143,7 +143,7 @@ REPLACE_WITH_EXCEPTION;
      * @param onerror the new property value
      */
     public void setOnerror(java.lang.String onerror) {
-REPLACE_WITH_EXCEPTION;
+        getStateHelper().put(PropertyKeys.onerror, onerror);
     }
 
 
@@ -153,7 +153,7 @@ REPLACE_WITH_EXCEPTION;
      * <p>Contents: The name of the JavaScript function that will handle UI events.
      */
     public java.lang.String getOnevent() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.onevent);
 
     }
 
@@ -162,7 +162,7 @@ REPLACE_WITH_EXCEPTION;
      * @param onevent the new property value
      */
     public void setOnevent(java.lang.String onevent) {
-REPLACE_WITH_EXCEPTION;
+        getStateHelper().put(PropertyKeys.onevent, onevent);
     }
 
 
@@ -177,7 +177,7 @@ REPLACE_WITH_EXCEPTION;
      * For example, <code>@this clientIdOne clientIdTwo</code>.
      */
     public java.lang.String getRender() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.render);
 
     }
 
@@ -186,7 +186,7 @@ REPLACE_WITH_EXCEPTION;
      * @param render the new property value
      */
     public void setRender(java.lang.String render) {
-REPLACE_WITH_EXCEPTION;
+        getStateHelper().put(PropertyKeys.render, render);
     }
 
 
@@ -201,7 +201,7 @@ REPLACE_WITH_EXCEPTION;
      * of the <code>render</code> attribute as the argument.
      */
     public java.lang.Boolean getResetValues() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.Boolean) getStateHelper().eval(PropertyKeys.resetValues);
 
     }
 
@@ -210,15 +210,15 @@ REPLACE_WITH_EXCEPTION;
      * @param resetValues the new property value
      */
     public void setResetValues(java.lang.Boolean resetValues) {
-REPLACE_WITH_EXCEPTION;
+        getStateHelper().put(PropertyKeys.resetValues, resetValues);
     }
 
 
-
+    private void handleAttribute(String name, Object value) {
         List<String> setAttributes = (List<String>) this.getAttributes().get("javax.faces.component.UIComponentBase.attributesThatAreSet");
         if (setAttributes == null) {
             String cname = this.getClass().getName();
-
+            if (cname != null && cname.startsWith(OPTIMIZED_PACKAGE)) {
                 setAttributes = new ArrayList<String>(6);
                 this.getAttributes().put("javax.faces.component.UIComponentBase.attributesThatAreSet", setAttributes);
             }

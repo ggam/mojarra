@@ -30,10 +30,10 @@ public class HtmlColumn extends UIColumn {
 
 
 
-
+    private static final String OPTIMIZED_PACKAGE = "javax.faces.component.";
 
     public HtmlColumn() {
-
+        super();
     }
 
 
@@ -64,7 +64,7 @@ public class HtmlColumn extends UIColumn {
      * applied to any footer generated for this column.
      */
     public java.lang.String getFooterClass() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.footerClass);
 
     }
 
@@ -73,7 +73,7 @@ REPLACE_WITH_EXCEPTION;
      * @param footerClass the new property value
      */
     public void setFooterClass(java.lang.String footerClass) {
-REPLACE_WITH_EXCEPTION;
+        getStateHelper().put(PropertyKeys.footerClass, footerClass);
     }
 
 
@@ -84,7 +84,7 @@ REPLACE_WITH_EXCEPTION;
      * applied to any header generated for this column.
      */
     public java.lang.String getHeaderClass() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.headerClass);
 
     }
 
@@ -93,7 +93,7 @@ REPLACE_WITH_EXCEPTION;
      * @param headerClass the new property value
      */
     public void setHeaderClass(java.lang.String headerClass) {
-REPLACE_WITH_EXCEPTION;
+        getStateHelper().put(PropertyKeys.headerClass, headerClass);
     }
 
 
@@ -105,7 +105,7 @@ REPLACE_WITH_EXCEPTION;
      * instead of "td" and must have the 'scope="row"' attribute.
      */
     public boolean isRowHeader() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.Boolean) getStateHelper().eval(PropertyKeys.rowHeader, false);
 
     }
 
@@ -114,7 +114,7 @@ REPLACE_WITH_EXCEPTION;
      * @param rowHeader the new property value
      */
     public void setRowHeader(boolean rowHeader) {
-REPLACE_WITH_EXCEPTION;
+        getStateHelper().put(PropertyKeys.rowHeader, rowHeader);
     }
 
 
@@ -125,7 +125,7 @@ REPLACE_WITH_EXCEPTION;
      * applied to the "td" of this column
      */
     public java.lang.String getStyleClass() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.styleClass);
 
     }
 
@@ -134,15 +134,15 @@ REPLACE_WITH_EXCEPTION;
      * @param styleClass the new property value
      */
     public void setStyleClass(java.lang.String styleClass) {
-REPLACE_WITH_EXCEPTION;
+        getStateHelper().put(PropertyKeys.styleClass, styleClass);
     }
 
 
-
+    private void handleAttribute(String name, Object value) {
         List<String> setAttributes = (List<String>) this.getAttributes().get("javax.faces.component.UIComponentBase.attributesThatAreSet");
         if (setAttributes == null) {
             String cname = this.getClass().getName();
-
+            if (cname != null && cname.startsWith(OPTIMIZED_PACKAGE)) {
                 setAttributes = new ArrayList<String>(6);
                 this.getAttributes().put("javax.faces.component.UIComponentBase.attributesThatAreSet", setAttributes);
             }

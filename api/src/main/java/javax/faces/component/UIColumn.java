@@ -49,8 +49,7 @@ public class UIColumn extends UIComponentBase {
      * </p>
      */
     public UIColumn() {
-        super();
-        setRendererType(null);
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
     
 
@@ -63,7 +62,7 @@ public class UIColumn extends UIComponentBase {
      */
     @Override
     public String getFamily() {
-        return COMPONENT_FAMILY;
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -75,7 +74,7 @@ public class UIColumn extends UIComponentBase {
      * @return the footer component.
      */
     public UIComponent getFooter() {
-        return getFacet("footer");
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -89,7 +88,7 @@ public class UIColumn extends UIComponentBase {
      * @throws NullPointerException if <code>footer</code> is <code>null</code>
      */
     public void setFooter(UIComponent footer) {
-        getFacets().put("footer", footer);
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -101,7 +100,7 @@ public class UIColumn extends UIComponentBase {
      * @return the header component.
      */
     public UIComponent getHeader() {
-        return getFacet("header");
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -115,7 +114,7 @@ public class UIColumn extends UIComponentBase {
      * @throws NullPointerException if <code>header</code> is <code>null</code>
      */
     public void setHeader(UIComponent header) {
-        getFacets().put("header", header);
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
 }

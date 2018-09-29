@@ -29,12 +29,6 @@ import javax.faces.component.UIComponent;
  */
 public class SearchKeywordContext {
 
-    private final SearchExpressionContext searchExpressionContext;
-    private final ContextCallback callback;
-    private final String remainingExpression;
-    
-    private boolean keywordResolved;
-
     /**
      * <p class="changed_added_2_3">Construct a new context with the given arguments.</p>
      *
@@ -43,9 +37,7 @@ public class SearchKeywordContext {
      * @param remainingExpression the remaining expression.
      */
     public SearchKeywordContext(SearchExpressionContext searchExpressionContext, ContextCallback callback, String remainingExpression) {
-        this.searchExpressionContext = searchExpressionContext;
-        this.callback = callback;
-        this.remainingExpression = remainingExpression;
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -57,8 +49,7 @@ public class SearchKeywordContext {
      * @since 2.3
      */
     public void invokeContextCallback(UIComponent target) {
-        keywordResolved = true;
-        callback.invokeContextCallback(searchExpressionContext.getFacesContext(), target);
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -69,7 +60,7 @@ public class SearchKeywordContext {
      * @since 2.3
      */
     public SearchExpressionContext getSearchExpressionContext() {
-        return searchExpressionContext;
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -80,7 +71,7 @@ public class SearchKeywordContext {
      * @since 2.3
      */
     public ContextCallback getCallback() {
-        return callback;
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -91,7 +82,7 @@ public class SearchKeywordContext {
      * @since 2.3
      */
     public String getRemainingExpression() {
-        return remainingExpression;
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -102,7 +93,7 @@ public class SearchKeywordContext {
      * @since 2.3
      */
     public boolean isKeywordResolved() {
-        return keywordResolved;
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -113,6 +104,6 @@ public class SearchKeywordContext {
      * @since 2.3
      */
     public void setKeywordResolved(boolean keywordResolved) {
-        this.keywordResolved = keywordResolved;
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 }

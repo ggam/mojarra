@@ -31,17 +31,17 @@ import javax.faces.component.UIData;
  * columns by child UIColumn components) that will
  * be rendered in an HTML <code>table</code> element.</p>
  * <p>By default, the <code>rendererType</code> property must be set to "<code>javax.faces.Table</code>".
-REPLACE_WITH_EXCEPTION;
+ * This value can be changed by calling the <code>setRendererType()</code> method.</p>
  */
 public class HtmlDataTable extends UIData implements ClientBehaviorHolder {
 
 
 
-
+    private static final String OPTIMIZED_PACKAGE = "javax.faces.component.";
 
     public HtmlDataTable() {
-
-REPLACE_WITH_EXCEPTION;
+        super();
+        setRendererType("javax.faces.Table");
     }
 
 
@@ -99,7 +99,7 @@ REPLACE_WITH_EXCEPTION;
      * <p>Contents: Name or code of the background color for this table.
      */
     public java.lang.String getBgcolor() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.bgcolor);
 
     }
 
@@ -108,8 +108,8 @@ REPLACE_WITH_EXCEPTION;
      * @param bgcolor the new property value
      */
     public void setBgcolor(java.lang.String bgcolor) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.bgcolor, bgcolor);
+        handleAttribute("bgcolor", bgcolor);
     }
 
 
@@ -121,7 +121,7 @@ REPLACE_WITH_EXCEPTION;
      * previously opened one should be ended).
      */
     public java.lang.String getBodyrows() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.bodyrows);
 
     }
 
@@ -130,7 +130,7 @@ REPLACE_WITH_EXCEPTION;
      * @param bodyrows the new property value
      */
     public void setBodyrows(java.lang.String bodyrows) {
-REPLACE_WITH_EXCEPTION;
+        getStateHelper().put(PropertyKeys.bodyrows, bodyrows);
     }
 
 
@@ -141,7 +141,7 @@ REPLACE_WITH_EXCEPTION;
      * around this table.
      */
     public int getBorder() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.Integer) getStateHelper().eval(PropertyKeys.border, Integer.MIN_VALUE);
 
     }
 
@@ -150,8 +150,8 @@ REPLACE_WITH_EXCEPTION;
      * @param border the new property value
      */
     public void setBorder(int border) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.border, border);
+        handleAttribute("border", border);
     }
 
 
@@ -162,7 +162,7 @@ REPLACE_WITH_EXCEPTION;
      * applied to any caption generated for this table.
      */
     public java.lang.String getCaptionClass() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.captionClass);
 
     }
 
@@ -171,7 +171,7 @@ REPLACE_WITH_EXCEPTION;
      * @param captionClass the new property value
      */
     public void setCaptionClass(java.lang.String captionClass) {
-REPLACE_WITH_EXCEPTION;
+        getStateHelper().put(PropertyKeys.captionClass, captionClass);
     }
 
 
@@ -181,7 +181,7 @@ REPLACE_WITH_EXCEPTION;
      * <p>Contents: CSS style(s) to be applied when this caption is rendered.
      */
     public java.lang.String getCaptionStyle() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.captionStyle);
 
     }
 
@@ -190,7 +190,7 @@ REPLACE_WITH_EXCEPTION;
      * @param captionStyle the new property value
      */
     public void setCaptionStyle(java.lang.String captionStyle) {
-REPLACE_WITH_EXCEPTION;
+        getStateHelper().put(PropertyKeys.captionStyle, captionStyle);
     }
 
 
@@ -201,7 +201,7 @@ REPLACE_WITH_EXCEPTION;
      * leave between the border of each cell and its contents.
      */
     public java.lang.String getCellpadding() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.cellpadding);
 
     }
 
@@ -210,8 +210,8 @@ REPLACE_WITH_EXCEPTION;
      * @param cellpadding the new property value
      */
     public void setCellpadding(java.lang.String cellpadding) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.cellpadding, cellpadding);
+        handleAttribute("cellpadding", cellpadding);
     }
 
 
@@ -226,7 +226,7 @@ REPLACE_WITH_EXCEPTION;
      * the amount of space to leave between cells.
      */
     public java.lang.String getCellspacing() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.cellspacing);
 
     }
 
@@ -235,8 +235,8 @@ REPLACE_WITH_EXCEPTION;
      * @param cellspacing the new property value
      */
     public void setCellspacing(java.lang.String cellspacing) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.cellspacing, cellspacing);
+        handleAttribute("cellspacing", cellspacing);
     }
 
 
@@ -255,7 +255,7 @@ REPLACE_WITH_EXCEPTION;
      * after the last column are ignored.
      */
     public java.lang.String getColumnClasses() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.columnClasses);
 
     }
 
@@ -264,7 +264,7 @@ REPLACE_WITH_EXCEPTION;
      * @param columnClasses the new property value
      */
     public void setColumnClasses(java.lang.String columnClasses) {
-REPLACE_WITH_EXCEPTION;
+        getStateHelper().put(PropertyKeys.columnClasses, columnClasses);
     }
 
 
@@ -277,7 +277,7 @@ REPLACE_WITH_EXCEPTION;
      * care must be taken to have the correct case.
      */
     public java.lang.String getDir() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.dir);
 
     }
 
@@ -286,8 +286,8 @@ REPLACE_WITH_EXCEPTION;
      * @param dir the new property value
      */
     public void setDir(java.lang.String dir) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.dir, dir);
+        handleAttribute("dir", dir);
     }
 
 
@@ -298,7 +298,7 @@ REPLACE_WITH_EXCEPTION;
      * applied to any footer generated for this table.
      */
     public java.lang.String getFooterClass() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.footerClass);
 
     }
 
@@ -307,7 +307,7 @@ REPLACE_WITH_EXCEPTION;
      * @param footerClass the new property value
      */
     public void setFooterClass(java.lang.String footerClass) {
-REPLACE_WITH_EXCEPTION;
+        getStateHelper().put(PropertyKeys.footerClass, footerClass);
     }
 
 
@@ -323,7 +323,7 @@ REPLACE_WITH_EXCEPTION;
      * (all four sides); and border (all four sides).
      */
     public java.lang.String getFrame() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.frame);
 
     }
 
@@ -332,8 +332,8 @@ REPLACE_WITH_EXCEPTION;
      * @param frame the new property value
      */
     public void setFrame(java.lang.String frame) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.frame, frame);
+        handleAttribute("frame", frame);
     }
 
 
@@ -344,7 +344,7 @@ REPLACE_WITH_EXCEPTION;
      * applied to any header generated for this table.
      */
     public java.lang.String getHeaderClass() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.headerClass);
 
     }
 
@@ -353,7 +353,7 @@ REPLACE_WITH_EXCEPTION;
      * @param headerClass the new property value
      */
     public void setHeaderClass(java.lang.String headerClass) {
-REPLACE_WITH_EXCEPTION;
+        getStateHelper().put(PropertyKeys.headerClass, headerClass);
     }
 
 
@@ -364,7 +364,7 @@ REPLACE_WITH_EXCEPTION;
      * for this component.
      */
     public java.lang.String getLang() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.lang);
 
     }
 
@@ -373,8 +373,8 @@ REPLACE_WITH_EXCEPTION;
      * @param lang the new property value
      */
     public void setLang(java.lang.String lang) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.lang, lang);
+        handleAttribute("lang", lang);
     }
 
 
@@ -385,7 +385,7 @@ REPLACE_WITH_EXCEPTION;
      * clicked over this element.
      */
     public java.lang.String getOnclick() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.onclick);
 
     }
 
@@ -394,8 +394,8 @@ REPLACE_WITH_EXCEPTION;
      * @param onclick the new property value
      */
     public void setOnclick(java.lang.String onclick) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.onclick, onclick);
+        handleAttribute("onclick", onclick);
     }
 
 
@@ -406,7 +406,7 @@ REPLACE_WITH_EXCEPTION;
      * double clicked over this element.
      */
     public java.lang.String getOndblclick() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.ondblclick);
 
     }
 
@@ -415,8 +415,8 @@ REPLACE_WITH_EXCEPTION;
      * @param ondblclick the new property value
      */
     public void setOndblclick(java.lang.String ondblclick) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.ondblclick, ondblclick);
+        handleAttribute("ondblclick", ondblclick);
     }
 
 
@@ -427,7 +427,7 @@ REPLACE_WITH_EXCEPTION;
      * pressed down over this element.
      */
     public java.lang.String getOnkeydown() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.onkeydown);
 
     }
 
@@ -436,8 +436,8 @@ REPLACE_WITH_EXCEPTION;
      * @param onkeydown the new property value
      */
     public void setOnkeydown(java.lang.String onkeydown) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.onkeydown, onkeydown);
+        handleAttribute("onkeydown", onkeydown);
     }
 
 
@@ -448,7 +448,7 @@ REPLACE_WITH_EXCEPTION;
      * pressed and released over this element.
      */
     public java.lang.String getOnkeypress() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.onkeypress);
 
     }
 
@@ -457,8 +457,8 @@ REPLACE_WITH_EXCEPTION;
      * @param onkeypress the new property value
      */
     public void setOnkeypress(java.lang.String onkeypress) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.onkeypress, onkeypress);
+        handleAttribute("onkeypress", onkeypress);
     }
 
 
@@ -469,7 +469,7 @@ REPLACE_WITH_EXCEPTION;
      * released over this element.
      */
     public java.lang.String getOnkeyup() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.onkeyup);
 
     }
 
@@ -478,8 +478,8 @@ REPLACE_WITH_EXCEPTION;
      * @param onkeyup the new property value
      */
     public void setOnkeyup(java.lang.String onkeyup) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.onkeyup, onkeyup);
+        handleAttribute("onkeyup", onkeyup);
     }
 
 
@@ -490,7 +490,7 @@ REPLACE_WITH_EXCEPTION;
      * pressed down over this element.
      */
     public java.lang.String getOnmousedown() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.onmousedown);
 
     }
 
@@ -499,8 +499,8 @@ REPLACE_WITH_EXCEPTION;
      * @param onmousedown the new property value
      */
     public void setOnmousedown(java.lang.String onmousedown) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.onmousedown, onmousedown);
+        handleAttribute("onmousedown", onmousedown);
     }
 
 
@@ -511,7 +511,7 @@ REPLACE_WITH_EXCEPTION;
      * moved within this element.
      */
     public java.lang.String getOnmousemove() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.onmousemove);
 
     }
 
@@ -520,8 +520,8 @@ REPLACE_WITH_EXCEPTION;
      * @param onmousemove the new property value
      */
     public void setOnmousemove(java.lang.String onmousemove) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.onmousemove, onmousemove);
+        handleAttribute("onmousemove", onmousemove);
     }
 
 
@@ -532,7 +532,7 @@ REPLACE_WITH_EXCEPTION;
      * moved away from this element.
      */
     public java.lang.String getOnmouseout() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.onmouseout);
 
     }
 
@@ -541,8 +541,8 @@ REPLACE_WITH_EXCEPTION;
      * @param onmouseout the new property value
      */
     public void setOnmouseout(java.lang.String onmouseout) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.onmouseout, onmouseout);
+        handleAttribute("onmouseout", onmouseout);
     }
 
 
@@ -553,7 +553,7 @@ REPLACE_WITH_EXCEPTION;
      * moved onto this element.
      */
     public java.lang.String getOnmouseover() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.onmouseover);
 
     }
 
@@ -562,8 +562,8 @@ REPLACE_WITH_EXCEPTION;
      * @param onmouseover the new property value
      */
     public void setOnmouseover(java.lang.String onmouseover) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.onmouseover, onmouseover);
+        handleAttribute("onmouseover", onmouseover);
     }
 
 
@@ -574,7 +574,7 @@ REPLACE_WITH_EXCEPTION;
      * released over this element.
      */
     public java.lang.String getOnmouseup() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.onmouseup);
 
     }
 
@@ -583,8 +583,8 @@ REPLACE_WITH_EXCEPTION;
      * @param onmouseup the new property value
      */
     public void setOnmouseup(java.lang.String onmouseup) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.onmouseup, onmouseup);
+        handleAttribute("onmouseup", onmouseup);
     }
 
 
@@ -607,7 +607,7 @@ REPLACE_WITH_EXCEPTION;
      * correctly interpreting the value of this attribute.</p>
      */
     public java.lang.String getRole() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.role);
 
     }
 
@@ -616,8 +616,8 @@ REPLACE_WITH_EXCEPTION;
      * @param role the new property value
      */
     public void setRole(java.lang.String role) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.role, role);
+        handleAttribute("role", role);
     }
 
 
@@ -632,7 +632,7 @@ REPLACE_WITH_EXCEPTION;
      * </div>
      */
     public java.lang.String getRowClass() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.rowClass);
 
     }
 
@@ -641,7 +641,7 @@ REPLACE_WITH_EXCEPTION;
      * @param rowClass the new property value
      */
     public void setRowClass(java.lang.String rowClass) {
-REPLACE_WITH_EXCEPTION;
+        getStateHelper().put(PropertyKeys.rowClass, rowClass);
     }
 
 
@@ -659,7 +659,7 @@ REPLACE_WITH_EXCEPTION;
      * the end, and then we start at the beginning again.
      */
     public java.lang.String getRowClasses() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.rowClasses);
 
     }
 
@@ -668,7 +668,7 @@ REPLACE_WITH_EXCEPTION;
      * @param rowClasses the new property value
      */
     public void setRowClasses(java.lang.String rowClasses) {
-REPLACE_WITH_EXCEPTION;
+        getStateHelper().put(PropertyKeys.rowClasses, rowClasses);
     }
 
 
@@ -682,7 +682,7 @@ REPLACE_WITH_EXCEPTION;
      * all (between all rows and columns).
      */
     public java.lang.String getRules() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.rules);
 
     }
 
@@ -691,8 +691,8 @@ REPLACE_WITH_EXCEPTION;
      * @param rules the new property value
      */
     public void setRules(java.lang.String rules) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.rules, rules);
+        handleAttribute("rules", rules);
     }
 
 
@@ -702,7 +702,7 @@ REPLACE_WITH_EXCEPTION;
      * <p>Contents: CSS style(s) to be applied when this component is rendered.
      */
     public java.lang.String getStyle() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.style);
 
     }
 
@@ -711,8 +711,8 @@ REPLACE_WITH_EXCEPTION;
      * @param style the new property value
      */
     public void setStyle(java.lang.String style) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.style, style);
+        handleAttribute("style", style);
     }
 
 
@@ -724,7 +724,7 @@ REPLACE_WITH_EXCEPTION;
      * as the "class" attribute on generated markup.
      */
     public java.lang.String getStyleClass() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.styleClass);
 
     }
 
@@ -733,7 +733,7 @@ REPLACE_WITH_EXCEPTION;
      * @param styleClass the new property value
      */
     public void setStyleClass(java.lang.String styleClass) {
-REPLACE_WITH_EXCEPTION;
+        getStateHelper().put(PropertyKeys.styleClass, styleClass);
     }
 
 
@@ -745,7 +745,7 @@ REPLACE_WITH_EXCEPTION;
      * speech and Braille.
      */
     public java.lang.String getSummary() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.summary);
 
     }
 
@@ -754,8 +754,8 @@ REPLACE_WITH_EXCEPTION;
      * @param summary the new property value
      */
     public void setSummary(java.lang.String summary) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.summary, summary);
+        handleAttribute("summary", summary);
     }
 
 
@@ -766,7 +766,7 @@ REPLACE_WITH_EXCEPTION;
      * for this component.
      */
     public java.lang.String getTitle() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.title);
 
     }
 
@@ -775,8 +775,8 @@ REPLACE_WITH_EXCEPTION;
      * @param title the new property value
      */
     public void setTitle(java.lang.String title) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.title, title);
+        handleAttribute("title", title);
     }
 
 
@@ -786,7 +786,7 @@ REPLACE_WITH_EXCEPTION;
      * <p>Contents: Width of the entire table, for visual user agents.
      */
     public java.lang.String getWidth() {
-REPLACE_WITH_EXCEPTION;
+        return (java.lang.String) getStateHelper().eval(PropertyKeys.width);
 
     }
 
@@ -795,8 +795,8 @@ REPLACE_WITH_EXCEPTION;
      * @param width the new property value
      */
     public void setWidth(java.lang.String width) {
-REPLACE_WITH_EXCEPTION;
-
+        getStateHelper().put(PropertyKeys.width, width);
+        handleAttribute("width", width);
     }
 
 
@@ -810,11 +810,11 @@ REPLACE_WITH_EXCEPTION;
         return null;    }
 
 
-
+    private void handleAttribute(String name, Object value) {
         List<String> setAttributes = (List<String>) this.getAttributes().get("javax.faces.component.UIComponentBase.attributesThatAreSet");
         if (setAttributes == null) {
             String cname = this.getClass().getName();
-
+            if (cname != null && cname.startsWith(OPTIMIZED_PACKAGE)) {
                 setAttributes = new ArrayList<String>(6);
                 this.getAttributes().put("javax.faces.component.UIComponentBase.attributesThatAreSet", setAttributes);
             }

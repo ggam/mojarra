@@ -26,17 +26,17 @@ import javax.faces.component.UIInput;
  * <p>Represents an HTML <code>input</code> element
  * of type <code>hidden</code>.</p>
  * <p>By default, the <code>rendererType</code> property must be set to "<code>javax.faces.Hidden</code>".
-REPLACE_WITH_EXCEPTION;
+ * This value can be changed by calling the <code>setRendererType()</code> method.</p>
  */
 public class HtmlInputHidden extends UIInput {
 
 
 
-
+    private static final String OPTIMIZED_PACKAGE = "javax.faces.component.";
 
     public HtmlInputHidden() {
-
-REPLACE_WITH_EXCEPTION;
+        super();
+        setRendererType("javax.faces.Hidden");
     }
 
 
@@ -56,11 +56,11 @@ REPLACE_WITH_EXCEPTION;
         }
 }
 
-
+    private void handleAttribute(String name, Object value) {
         List<String> setAttributes = (List<String>) this.getAttributes().get("javax.faces.component.UIComponentBase.attributesThatAreSet");
         if (setAttributes == null) {
             String cname = this.getClass().getName();
-
+            if (cname != null && cname.startsWith(OPTIMIZED_PACKAGE)) {
                 setAttributes = new ArrayList<String>(6);
                 this.getAttributes().put("javax.faces.component.UIComponentBase.attributesThatAreSet", setAttributes);
             }

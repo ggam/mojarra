@@ -172,7 +172,7 @@ public abstract class SearchKeywordResolver {
      * @since 2.3
      */
     public boolean isPassthrough(SearchExpressionContext searchExpressionContext, String keyword) {
-        return false;
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -188,6 +188,6 @@ public abstract class SearchKeywordResolver {
      * @since 2.3
      */
     public boolean isLeaf(SearchExpressionContext searchExpressionContext, String keyword) {
-        return false;
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 }

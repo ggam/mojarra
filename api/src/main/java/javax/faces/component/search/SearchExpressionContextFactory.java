@@ -32,8 +32,6 @@ import javax.faces.context.FacesContext;
  */
 public abstract class SearchExpressionContextFactory implements FacesWrapper<SearchExpressionContextFactory> {
 
-    private final SearchExpressionContextFactory wrapped;
-
     /**
      * <p class="changed_added_2_3">If this factory has been decorated,
      * the implementation doing the decorating should push the implementation being wrapped to this constructor.
@@ -42,7 +40,7 @@ public abstract class SearchExpressionContextFactory implements FacesWrapper<Sea
      * @param wrapped The implementation being wrapped.
      */
     public SearchExpressionContextFactory(SearchExpressionContextFactory wrapped) {
-        this.wrapped = wrapped;
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
@@ -52,7 +50,7 @@ public abstract class SearchExpressionContextFactory implements FacesWrapper<Sea
      */
     @Override
     public SearchExpressionContextFactory getWrapped() {
-        return wrapped;
+        throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
 
     /**
