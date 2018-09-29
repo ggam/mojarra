@@ -90,7 +90,7 @@ public class ConverterTag extends TagSupport {
      *
      * @throws JspException if a JSP error occurs
      */
-    public void setBinding(String binding) {
+    public void setBinding(String binding) throws JspException {
         throw new UnsupportedOperationException("This is API for compile only purposes.");
     }
     // ---------------------------------------------------------- Public Methods
