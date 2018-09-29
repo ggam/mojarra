@@ -145,74 +145,6 @@
     
     <build>
         <plugins>
-        
-           <!-- 
-               Unpack the sources jar that was build and installed by the [mojarra home]/impl project. This way
-               we can compile that source again in this project, but for the final artifact jar we only include
-               the javax.* classes then.
-            -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>3.0.2</version>
-                <executions>
-                    <execution>
-                        <id>unpack</id>
-                        <phase>initialize</phase>
-                        <goals>
-                            <goal>unpack</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                
-                <configuration>
-                    <artifactItems>
-                        <artifactItem>
-                            <groupId>org.glassfish</groupId>
-                            <artifactId>javax.faces</artifactId>
-                            <version>${mojarra.version}</version>
-                            <classifier>sources</classifier>
-                            <outputDirectory>src/main/java</outputDirectory>
-                            <includes>**/*.java</includes>
-                        </artifactItem>
-                        
-                        <artifactItem>
-                            <groupId>org.glassfish</groupId>
-                            <artifactId>javax.faces</artifactId>
-                            <version>${mojarra.version}</version>
-                            <classifier>sources</classifier>
-                            <outputDirectory>src/main/resources</outputDirectory>
-                            <excludes>**/*.java</excludes>
-                        </artifactItem>
-                    </artifactItems>
-                </configuration>
-            </plugin>
-            
-            <!-- 
-                Clean unpacked sources jar
-             -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>1.8</version>
-                <executions>
-                    <execution>
-                        <id>clean</id>
-                        <phase>clean</phase>
-                        <configuration>
-                            <target>
-                                <delete dir="src/main/java"/>
-                                <delete dir="src/main/resources"/>
-                            </target>
-                        </configuration>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            
-        
             <!-- 
                 Create VDL docs
              -->
@@ -278,46 +210,6 @@
                     <facesConfig>${project.basedir}/src/main/resources/com/sun/faces/standard-html-renderkit.xml</facesConfig>
                     <schemaDirectory>${project.basedir}/src/main/resources</schemaDirectory>
                 </configuration>
-            </plugin>
-            
-            <!-- 
-               Create API binary jar
-            
-               For the final artifact jar we only include the javax.* classes and resources that we compiled from
-               the unpackaged implementation source attachment jar. See the maven-dependency-plugin for this
-               unpackaging. This effectively gives us the API jar.
-            -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.0.2</version>
-                <configuration>
-                    <includes>
-                        <include>javax/**</include>
-                    </includes>
-                </configuration>
-            </plugin>
-            
-             <!-- 
-               Create sources for API jar
-             -->
-             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>3.0.1</version>
-                <executions>
-                    <execution>
-                        <id>generate-api-sources</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                        <configuration>
-                            <excludes>
-                                <exclude>com/**</exclude>
-                            </excludes>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
             
              <!-- 
@@ -392,54 +284,6 @@
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
             <version>7.0</version>
-            <scope>provided</scope>
-        </dependency>
-        
-        <!-- 
-           Depend on the source jar of the full implementation Mojarra jar. This is used for
-           unpacking and re-compiling. This jar is created by executing mvn clean install
-           in the [mojarra home]/impl project.       
-        -->
-        <dependency>
-            <groupId>org.glassfish</groupId>
-            <artifactId>javax.faces</artifactId>
-            <version>${mojarra.version}</version>
-            <scope>provided</scope>
-            <classifier>sources</classifier>
-        </dependency>
-
-        <dependency>
-            <groupId>com.sun.faces.build</groupId>
-            <artifactId>jsf-tools</artifactId>
-            <version>${mojarra.version}</version>
-        </dependency>
-   
-        
-         <!-- 
-            For the vendor SPI implementations shipped with Mojarra.
-            Although we don't use them and they don't end up in the API jar, they
-            still need to be compiled
-         -->
-         
-         <!-- Jetty 6 -->
-        <dependency>
-            <groupId>org.mortbay.jetty</groupId>
-            <artifactId>jetty-plus</artifactId>
-            <version>6.1.26</version>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.mortbay.jetty</groupId>
-            <artifactId>jetty-annotations</artifactId>
-            <version>6.1.26</version>
-            <optional>true</optional>
-        </dependency>
-
-        <!-- Tomcat 6 -->
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>catalina</artifactId>
-            <version>6.0.51</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

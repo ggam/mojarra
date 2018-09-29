@@ -7,7 +7,7 @@
     ],
     "templates": {
         "default" : {
-            "layoutFile": "src/main/jsdoc/mojarra.tmpl"
+            "layoutFile": "src/main/jsdoc/standard.tmpl"
         },
         "cleverLinks": false,
         "monospaceLinks": false
